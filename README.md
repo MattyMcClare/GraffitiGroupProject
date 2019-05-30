@@ -1,2 +1,2 @@
 
-Graffity Java/JavaScript Project
+Graffiti Java/JavaScript Project
