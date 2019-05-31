@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import ArtGrid from '../components/ArtGrid';
-import Filter from '../components/Filter';
-import Sort from '../components/Sort';
+import ArtGrid from './ArtGrid';
+import Filter from './Filter';
+import Sort from './Sort';
 
 class AllArtView extends Component {
     render() {

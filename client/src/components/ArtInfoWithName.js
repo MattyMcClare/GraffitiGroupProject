@@ -4,8 +4,9 @@ import Artist from './Artist';
 const ArtInfoWithName = () => {
     return (
         <>
-            <h3>ArtInfoWithName</h3>
             <Artist />
+            <p>Location</p>
+            <p>Date</p>
         </>
     )
 }

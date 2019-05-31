@@ -1,7 +1,12 @@
 import React from 'react';
 
 const ArtInfoNoName = () => {
-    return <h3>ArtInfoNoName</h3>
+    return (
+        <>
+            <p>Location</p>
+            <p>Date</p>
+        </>
+    )
 }
 
 export default ArtInfoNoName;
