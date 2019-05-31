@@ -22,8 +22,9 @@ public class Art {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
-    private List<String> images;
+    @JsonIgnore
+    @OneToMany(mappedBy = "art", fetch = FetchType.LAZY)
+    private List<Image> images;
 
     @JsonIgnore
     @ManyToOne
@@ -39,18 +40,21 @@ public class Art {
     @OneToOne
     Location location;
 
-    @Column
-    @Temporal(TemporalType.DATE)
-    private Date publicationDate;
+//    @Column
+//    @Temporal(TemporalType.DATE)
+//    private Date publicationDate;
 
-    public Art(Artist artist, StyleType style, String description, Location location, Date publicationDate) {
+    public Art(Artist artist, StyleType style, String description, Location location) {
+        this.images = new ArrayList<>();
         this.artist = artist;
         this.style = style;
         this.description = description;
         this.location = location;
-        this.publicationDate = publicationDate;
+//        this.publicationDate = publicationDate;
         this.images = new ArrayList<>();
     }
+
+    public Art() {}
 
     public Long getId() {
         return id;
@@ -92,19 +96,19 @@ public class Art {
         this.location = location;
     }
 
-    public List<String> getImages() {
+    public List<Image> getImages() {
         return images;
     }
 
-    public void setImages(List<String> images) {
+    public void setImages(List<Image> images) {
         this.images = images;
     }
 
-    public void setPublicationDate(Date publicationDate) {
-        this.publicationDate = publicationDate;
-    }
+//    public void setPublicationDate(Date publicationDate) {
+//        this.publicationDate = publicationDate;
+//    }
 
-    public Date getPublicationDate() {
-        return publicationDate;
-    }
+//    public Date getPublicationDate() {
+//        return publicationDate;
+//    }
 }

@@ -8,7 +8,6 @@ import java.util.Date;
 import java.util.List;
 
 @Repository
-public interface ArtRepository extends JpaRepository<Art, Long>, ArtRepositoryCustom {
-
-    List<Art> findArtByPublicationDate(Date publicationDate);
+public interface ArtRepository extends JpaRepository<Art, Long> {
+//    List<Art> findArtByPublicationDate(Date publicationDate);
 }

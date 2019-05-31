@@ -24,8 +24,8 @@ public class Artist {
     @Column
     private String description;
 
-    @JsonIgnoreProperties
-    @OneToMany(mappedBy = "art", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("artist")
+    @OneToMany(mappedBy = "artist", fetch = FetchType.LAZY)
     private  List<Art> art;
 
     public Artist(String handle, String signature, String description) {
