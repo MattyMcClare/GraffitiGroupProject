@@ -1,7 +1,13 @@
 import React from 'react';
 
 const Sort = () => {
-    return <h2>Sort</h2>
+    return (
+        <>
+            <h3>Sort By:</h3>
+            <p>Distance: </p>
+            <p>Date: </p>
+        </>
+    )
 }
 
 export default Sort;

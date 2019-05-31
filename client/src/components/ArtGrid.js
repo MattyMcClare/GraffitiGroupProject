@@ -4,7 +4,6 @@ import ArtBox from './ArtBox';
 const ArtGrid = () => {
     return (
         <>
-            <h2>ArtGrid</h2>
             <ArtBox />
         </>
     )
