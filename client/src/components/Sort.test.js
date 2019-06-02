@@ -13,7 +13,11 @@ describe('Sort', () => {
     });
 
     it('should render <p>', () => {
-        const pCount = wrapper.find('p').length;
-        expect(pCount).toEqual(2);
+        const buttonCount = wrapper.find('button').length;
+        expect(buttonCount).toEqual(2);
     });
+    it('should render <div>', () => {
+        const divCount = wrapper.find('div').length;
+        expect(divCount).toEqual(1)
+    })
 });
