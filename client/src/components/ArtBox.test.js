@@ -3,14 +3,14 @@ import ArtBox from './ArtBox';
 import ArtInfoWithName from './ArtInfoWithName';
 import { shallow } from 'enzyme';
 
-describe('ArtInfoWithName', () => {
+describe('ArtBox', () => {
     let wrapper;
 
     beforeEach(() => wrapper = shallow(<ArtBox />));
 
     it('should render <div>', () => {
         const divCount = wrapper.find('div').length;
-        expect(divCount).toEqual(1);
+        expect(divCount).toEqual(3);
     });
 
     it('should render <img>', () => {

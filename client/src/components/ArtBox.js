@@ -1,12 +1,21 @@
 import React from 'react';
 import ArtInfoWithName from './ArtInfoWithName';
-import defaultImage from '../img/default-image.jpg'
 
-const ArtBox = () => {
+
+const ArtBox = ({ img, handle, signature, location }) => {
     return (
         <div className="art-box">
-            <img src={defaultImage} alt="default" height="200" width="200"></img>
-            <ArtInfoWithName />
+            <div className="art-box-image">
+                <img src={img} alt="default" height="200" width="200"></img>
+            </div>
+            <div className="art-box-info">
+                <ArtInfoWithName
+                    handle={handle}
+                    signature={signature}
+                    location={location}
+                >
+                </ArtInfoWithName>
+            </div>
         </div>
     )
 

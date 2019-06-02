@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ArtGrid from './ArtGrid';
 import Filter from './Filter';
 import Sort from './Sort';
 
-class AllArtView extends Component {
-    render() {
-        return (
-            <div>
-                <Filter />
-                <Sort />
-                <ArtGrid />
-            </div>
-        )
-    }
+const AllArtView = ({ allArt }) => {
+
+    return (
+        <div>
+            <Filter />
+            <Sort />
+            <ArtGrid allArt={allArt} />
+        </div>
+    )
+
 }
 
 export default AllArtView;
