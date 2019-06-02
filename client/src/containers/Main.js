@@ -7,10 +7,12 @@ class Main extends Component {
   render() {
     return (
       <Router>
-        <Switch>
-          <Route exact path="/" component={AllArtView} />
-          <Route component={ErrorPage} />
-        </Switch>
+        <React.Fragment>
+          <Switch>
+            <Route exact path="/" component={AllArtView} />
+            <Route component={ErrorPage} />
+          </Switch>
+        </React.Fragment>
       </Router>
     );
   }
