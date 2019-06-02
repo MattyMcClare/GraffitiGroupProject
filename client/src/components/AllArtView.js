@@ -6,11 +6,11 @@ import Sort from './Sort';
 class AllArtView extends Component {
     render() {
         return (
-            <>
+            <div>
                 <Filter />
                 <Sort />
                 <ArtGrid />
-            </>
+            </div>
         )
     }
 }
