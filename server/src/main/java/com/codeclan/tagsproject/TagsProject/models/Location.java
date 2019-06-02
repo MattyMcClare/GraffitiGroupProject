@@ -18,7 +18,7 @@ public class Location {
     @Column(name="longitude")
     private String longitude;
 
-    @OneToOne(mappedBy = "location_id")
+    @OneToOne(mappedBy = "location", fetch = FetchType.LAZY)
     private Art art;
 
     public Location(String latitude, String longitude) {

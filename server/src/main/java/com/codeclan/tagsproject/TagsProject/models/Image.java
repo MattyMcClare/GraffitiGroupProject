@@ -1,6 +1,7 @@
 package com.codeclan.tagsproject.TagsProject.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 
@@ -15,6 +16,7 @@ public class Image {
     @JsonIgnoreProperties("images")
     @ManyToOne
     @JoinColumn(name="art_id")
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private Art art;
 
     @Column(name = "url")

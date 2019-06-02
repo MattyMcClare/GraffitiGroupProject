@@ -41,7 +41,6 @@ public class Art {
         this.style = style;
         this.description = description;
         this.location = location;
-        this.images = new ArrayList<>();
     }
 
     public Art() {}
