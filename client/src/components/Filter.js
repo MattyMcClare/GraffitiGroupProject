@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Filter extends Component {
     render() {
         return (
-            <>
+            <div className="filter-form">
                 <h3>Filter By: </h3>
                 <form>
                     <label for="date">Date: </label>
@@ -27,7 +27,7 @@ class Filter extends Component {
                     </label>
                     <input type="submit" value="Submit" />
                 </form>
-            </>
+            </div>
         )
     }
 }
