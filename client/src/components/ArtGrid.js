@@ -3,9 +3,9 @@ import ArtBox from './ArtBox';
 
 const ArtGrid = () => {
     return (
-        <>
+        <div className="art-grid">
             <ArtBox />
-        </>
+        </div>
     )
 }
 
