@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
-@Repository//RestResource(excerptProjection = EmbedArtForArtist.class)
+@RepositoryRestResource(excerptProjection = EmbedArtForArtist.class)
 public interface ArtistRepository extends JpaRepository<Artist, Long>, ArtistRepositoryCustom {
 
 }
