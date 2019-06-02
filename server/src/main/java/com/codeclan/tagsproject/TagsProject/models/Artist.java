@@ -1,5 +1,4 @@
 package com.codeclan.tagsproject.TagsProject.models;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -15,13 +14,13 @@ public class Artist {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(name = "handle")
     private String handle;
 
-    @Column
+    @Column(name = "signature")
     private String signature;
 
-    @Column
+    @Column(name  = "description")
     private String description;
 
     @JsonIgnoreProperties("artist")

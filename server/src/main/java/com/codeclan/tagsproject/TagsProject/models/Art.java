@@ -2,6 +2,7 @@ package com.codeclan.tagsproject.TagsProject.models;
 
 import com.codeclan.tagsproject.TagsProject.Enums.StyleType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -15,25 +16,26 @@ public class Art {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JsonIgnore
+    @JsonIgnoreProperties("art")
     @OneToMany(mappedBy = "art", fetch = FetchType.LAZY)
     private List<Image> images;
 
     @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="artist", nullable = false)
     Artist artist;
 
-    @Column
+    @Column(name = "style")
     private StyleType style;
 
-    @Column
+    @Column(name = "description")
     private String description;
 
-    @JsonIgnore
-    @OneToOne
-    Location location;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
+    private Location location;
 
-    public Art(Artist artist, StyleType style, String description, Location location) {
+    public Art(Artist artist, StyleType style, String description) {
         this.images = new ArrayList<>();
         this.artist = artist;
         this.style = style;

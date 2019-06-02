@@ -17,7 +17,7 @@ public class Image {
     @JoinColumn(name="art_id")
     private Art art;
 
-    @Column
+    @Column(name = "url")
     private String url;
 
     public Image(Art art, String url) {

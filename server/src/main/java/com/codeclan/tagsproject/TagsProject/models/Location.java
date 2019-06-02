@@ -1,5 +1,7 @@
 package com.codeclan.tagsproject.TagsProject.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,15 +12,19 @@ public class Location {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(name="latitude")
     private String latitude;
 
-    @Column
+    @Column(name="longitude")
     private String longitude;
+
+    @OneToOne(mappedBy = "location_id")
+    private Art art;
 
     public Location(String latitude, String longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
+
     }
 
     public Location(){
