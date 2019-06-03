@@ -56,7 +56,7 @@ class Filter extends Component {
             }
           });
         } else {
-          props.locationNotFound();
+          this.props.locationNotFound();
         }
       }
     });
@@ -78,7 +78,8 @@ class Filter extends Component {
 
   render() {
     return (
-      <form className="filter-form" onSubmit={this.handleSubmit}>
+      <form className="filter-form"
+        onSubmit={this.handleSubmit}>
 
         <LocationFilter
           onStringLocation = {this.onStringLocation}
