@@ -13,7 +13,7 @@ class LocationFilter extends Component {
   handleGeolocatorClick(evt){
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition( (position) => {
-        const coordString = `(${position.coords.latitude}, ${position.coords.longitude})`;
+        const coordString = `${position.coords.latitude},${position.coords.longitude}`;
         this.props.onStringLocation(coordString);
       });
     } else {

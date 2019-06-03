@@ -1,6 +1,6 @@
 import React from 'react';
 import AllArtView from './AllArtView'
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 
 describe('AllArtView', () => {
     let wrapper;
