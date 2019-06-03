@@ -10,6 +10,12 @@ class Main extends Component {
 
     this.state = {
       sortMethod: true,
+      location: {
+        lat: 55.95206,
+        long: -3.19648
+      },
+      distance: 0,
+
       allArt: [
         {
           id: 1,
@@ -29,11 +35,31 @@ class Main extends Component {
     }
 
     this.changeSortMethod = this.changeSortMethod.bind(this);
+    this.setDefaultLocation = this.setDefaultLocation.bind(this);
+    this.setLocation = this.setLocation.bind(this);
+    this.setDistance = this.setDistance.bind(this);
   }
 
   changeSortMethod(){
     const changedState = !this.state.sortMethod;
     this.setState({sortMethod: changedState});
+  }
+
+  setLocation(latLong){
+    this.setState({location: latLong});
+  }
+
+  setDefaultLocation(){
+    this.setState({
+      location: {
+        lat: 55.95206,
+        long: -3.19648
+      }
+    });
+  }
+
+  setDistance(inputDistance){
+    this.setState({distance: inputDistance})
   }
 
   render() {
@@ -47,6 +73,9 @@ class Main extends Component {
                 allArt={this.state.allArt}
                 changeSortMethod = {this.changeSortMethod}
                 sortMethod = {this.state.sortMethod}
+                setLocation = {this.setLocation}
+                setDefaultLocation = {this.setDefaultLocation}
+                setDistance = {this.setDistance}
                 />
               }
             />
