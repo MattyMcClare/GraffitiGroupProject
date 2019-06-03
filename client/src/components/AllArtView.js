@@ -12,7 +12,10 @@ const AllArtView = (props) => {
     return (
         <div>
             <Filter displayLocationNotFound={locationNotFound()} />
-            <Sort />
+            <Sort
+              changeSortMethod = {props.changeSortMethod}
+              sortMethod = {props.sortMethod}
+            />
             <ArtGrid allArt={props.allArt} />
         </div>
     )

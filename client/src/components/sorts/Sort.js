@@ -3,22 +3,18 @@ import SortButton from './SortButton.js'
 
 const Sort = (props) => {
 
-  const onClickEvent = () => {
-    props.buttonState = !props.buttonState;
-  }
-
   return (
       <div className="sort-form">
           <h4>Sort By:</h4>
           <SortButton
-            buttonState = {props.buttonState}
+            buttonState = {props.sortMethod}
             buttonText = "Most Recent"
-            onClickEvent = {onClickEvent}
+            changeSortMethod = {props.changeSortMethod}
           />
           <SortButton
-            buttonState = {!props.buttonState}
+            buttonState = {!props.sortMethod}
             buttonText = "Closest"
-            onClickEvent = {onClickEvent}
+            changeSortMethod = {props.changeSortMethod}
           />
       </div>
   )
