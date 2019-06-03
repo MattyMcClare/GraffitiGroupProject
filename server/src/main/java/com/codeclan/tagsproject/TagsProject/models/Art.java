@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +35,7 @@ public class Art {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "location_id", referencedColumnName = "id")
     private Location location;
+
 
     public Art(Artist artist, StyleType style, String description) {
         this.images = new ArrayList<>();
@@ -92,5 +94,6 @@ public class Art {
     public void setImages(List<Image> images) {
         this.images = images;
     }
+
 
 }
