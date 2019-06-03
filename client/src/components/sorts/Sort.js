@@ -1,13 +1,28 @@
 import React from 'react';
+import SortButton from './SortButton.js'
 
-const Sort = () => {
-    return (
-        <div className="sort-form">
-            <h3>Sort By:</h3>
-            <button>Closest</button>
-            <button>Most Recent</button>
-        </div>
-    )
+const Sort = (props) => {
+
+  const onClickEvent = () => {
+    props.buttonState = !props.buttonState;
+  }
+
+  return (
+      <div className="sort-form">
+          <h4>Sort By:</h4>
+          <SortButton
+            buttonState = {props.buttonState}
+            buttonText = "Most Recent"
+            onClickEvent = {onClickEvent}
+          />
+          <SortButton
+            buttonState = {!props.buttonState}
+            buttonText = "Closest"
+            onClickEvent = {onClickEvent}
+          />
+      </div>
+  )
+
 }
 
 export default Sort;
