@@ -1,12 +1,17 @@
 package com.codeclan.tagsproject.TagsProject.models;
 
+import com.codeclan.tagsproject.TagsProject.Converter.LocalDateConverter;
 import com.codeclan.tagsproject.TagsProject.Enums.StyleType;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.apache.tomcat.jni.Local;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.sql.Date;
 import java.util.List;
 
 @Entity
@@ -36,13 +41,20 @@ public class Art {
     @JoinColumn(name = "location_id", referencedColumnName = "id")
     private Location location;
 
+    @Column(name= "date")
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate dateUploaded;
 
-    public Art(Artist artist, StyleType style, String description) {
+
+
+
+    public Art(Artist artist, StyleType style, String description, LocalDate dateUploaded) {
         this.images = new ArrayList<>();
         this.artist = artist;
         this.style = style;
         this.description = description;
         this.location = location;
+        this.dateUploaded  = dateUploaded;
     }
 
     public Art() {}
@@ -95,5 +107,11 @@ public class Art {
         this.images = images;
     }
 
+    public LocalDate getDateUploaded() {
+        return dateUploaded;
+    }
 
+    public void setDateUploaded(LocalDate dateUploaded) {
+        this.dateUploaded = dateUploaded;
+    }
 }

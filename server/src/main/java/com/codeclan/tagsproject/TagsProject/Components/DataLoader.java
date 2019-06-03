@@ -14,6 +14,9 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Component
 public class DataLoader implements ApplicationRunner {
 
@@ -47,18 +50,19 @@ public class DataLoader implements ApplicationRunner {
 
         Artist Salvador = new Artist("Dali", "https://www.instagram.com/p/BuQtpMIALY9/", "Real straight shooter.");
 
-        Art piece1 = new Art(JimmyMcGee, StyleType.PIECE, "Pure piece eh?");
+        LocalDate date1 = LocalDate.now();
 
-        Art piece2 = new Art(Banksy, StyleType.PASTEUP, "Hedgehog with Ennui");
+        Art piece1 = new Art(JimmyMcGee, StyleType.PIECE, "Pure piece eh?", date1);
 
-        Art piece3 = new Art(Salvador, StyleType.STENCIL, "Paint Roller Girl");
+        Art piece2 = new Art(Banksy, StyleType.PASTEUP, "Hedgehog with Ennui", date1);
+
+        Art piece3 = new Art(Salvador, StyleType.STENCIL, "Paint Roller Girl", date1);
 
         Image image1 = new Image(piece1, "https://www.instagram.com/p/Bs8Xt7BgfLM/");
 
         Image image2 = new Image(piece2, "https://www.instagram.com/p/Bsn6PN4gzfw/");
 
         Image image3 = new Image(piece3, "https://www.instagram.com/p/BjJxuVtAZUm/");
-
 
         locationRepository.save(Dundee);
         locationRepository.save(Glasgow);
@@ -75,6 +79,7 @@ public class DataLoader implements ApplicationRunner {
         artRepository.save(piece3);
         artRepository.save(piece2);
         artRepository.save(piece1);
+
         JimmyMcGee.getArt().add(piece1);
         Banksy.getArt().add(piece2);
         Salvador.getArt().add(piece3);
