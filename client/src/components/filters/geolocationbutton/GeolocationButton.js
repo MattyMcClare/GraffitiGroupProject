@@ -3,7 +3,7 @@ import geologo from './geolocationicon.png';
 
 const GeolocationButton = (props) => {
   return (
-    <button className="image-button" onClick={props.handleGeolocatorClick}>
+    <button type = "button" className="image-button" onClick={props.handleGeolocatorClick}>
       <img src={geologo} alt="compass"/>
     </button>
   )
