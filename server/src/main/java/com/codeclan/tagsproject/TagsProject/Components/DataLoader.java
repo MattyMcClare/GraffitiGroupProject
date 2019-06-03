@@ -35,11 +35,11 @@ public class DataLoader implements ApplicationRunner {
 
     public void run(ApplicationArguments args){
 
-        Location Edinburgh = new Location("55.9533N", "3.1883W");
+        Location Edinburgh = new Location(55.95206, -3.19648);
 
-        Location Glasgow = new Location("55.8642N", "4.2518W");
+        Location Glasgow = new Location(55.86515, -4.25763);
 
-        Location Dundee = new Location("56.4620N", "2.9707W");
+        Location Dundee = new Location(56.46913, -2.97489);
 
         Artist JimmyMcGee = new Artist("Wee Jim", "https://www.instagram.com/p/Bx9yf7pDs4M/", "He's wee, He's Jim.");
 

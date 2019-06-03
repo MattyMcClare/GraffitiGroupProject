@@ -13,15 +13,15 @@ public class Location {
     private Long id;
 
     @Column(name="latitude")
-    private String latitude;
+    private float latitude;
 
     @Column(name="longitude")
-    private String longitude;
+    private float longitude;
 
     @OneToOne(mappedBy = "location", fetch = FetchType.LAZY)
     private Art art;
 
-    public Location(String latitude, String longitude) {
+    public Location(float latitude, float longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
 
@@ -39,7 +39,7 @@ public class Location {
         this.id = id;
     }
 
-    public String getLatitude() {
+    public float getLatitude() {
         return latitude;
     }
 
@@ -47,7 +47,7 @@ public class Location {
         this.latitude = latitude;
     }
 
-    public String getLongitude() {
+    public float getLongitude() {
         return longitude;
     }
 
