@@ -2,6 +2,7 @@ package com.codeclan.tagsproject.TagsProject.models;
 
 import com.codeclan.tagsproject.TagsProject.Converter.LocalDateConverter;
 import com.codeclan.tagsproject.TagsProject.Enums.StyleType;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.apache.tomcat.jni.Local;
@@ -41,7 +42,7 @@ public class Art {
     private Location location;
 
     @Column(name= "date")
-    @DateTimeFormat(pattern = "yyyy-MM-dd ")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateUploaded;
 
 
