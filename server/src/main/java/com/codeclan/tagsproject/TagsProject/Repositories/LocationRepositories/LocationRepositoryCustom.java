@@ -6,5 +6,5 @@ import com.codeclan.tagsproject.TagsProject.models.Location;
 import java.util.List;
 
 public interface LocationRepositoryCustom {
-    List<Location> getAllArtWithinDistance(String latitude, String longitude, int distance);
+    List<Location> getAllArtWithinDistance(double latitude, double longitude, int distance);
 }

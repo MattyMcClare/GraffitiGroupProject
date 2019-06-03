@@ -14,18 +14,19 @@ import java.util.List;
 public class LocationRepositoryImpl implements LocationRepositoryCustom{
 
     @Autowired
+    CalculateDistance calculateDistance;
+
+    @Autowired
     EntityManager entityManager;
 
     @Autowired
     LocationRepository locationRepository;
 
-    @Transactional
     public List<Location> getAllArtWithinDistance(double latitude, double longitude, int distance) {
        List<Location> result = null;
        Session session = entityManager.unwrap(Session.class);
        try {
-
-          result = new CalculateDistance();
+          result = calculateDistance.calculateDistance(latitude, longitude, distance);
 
        } catch (HibernateException ex){
            ex.printStackTrace();

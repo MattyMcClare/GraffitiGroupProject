@@ -1,7 +1,6 @@
 package com.codeclan.tagsproject.TagsProject.Controllers;
 
 import com.codeclan.tagsproject.TagsProject.Repositories.LocationRepositories.LocationRepository;
-import com.codeclan.tagsproject.TagsProject.models.Art;
 import com.codeclan.tagsproject.TagsProject.models.Location;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,11 +17,9 @@ public class LocationController {
     @Autowired
     LocationRepository locationRepository;
 
-    @GetMapping(value = "/long={long}/lat={lat}/dist={dist}")
-    public List<Art> getAllArtWithinDistance (@PathVariable double latitude, double longitude, int distance) {
+    @GetMapping(value = "/{latitude}/{longitude}/{distance}")
+    public List<Location> getAllArtWithinDistance (@PathVariable("latitude") double latitude, @PathVariable("longitude") double longitude,@PathVariable("distance") int distance) {
         return locationRepository.getAllArtWithinDistance(latitude, longitude, distance);
-    } catch {
-
     }
 
 
