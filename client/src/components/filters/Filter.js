@@ -6,25 +6,25 @@ import mapKey from '../../keys.js';
 
 class Filter extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
-      this.state = {
-        stringLocation: '',
-        location: {
-          lat: 0,
-          long: 0
-        },
-        distance: 0
-      };
-      this.handleSubmit = this.handleSubmit.bind(this);
-      this.onStringLocation = this.onStringLocation.bind(this);
-      this.onDistanceSelectChange = this.onDistanceSelectChange.bind(this);
+    this.state = {
+      stringLocation: '',
+      location: {
+        lat: 0,
+        long: 0
+      },
+      distance: 0
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.onStringLocation = this.onStringLocation.bind(this);
+    this.onDistanceSelectChange = this.onDistanceSelectChange.bind(this);
   }
 
-  handleSubmit(evt){
+  handleSubmit(evt) {
     evt.preventDefault();
 
-    if (this.state.stringLocation !== ''){
+    if (this.state.stringLocation !== '') {
       this.fetchMapCoordinates(this.state.stringLocation)
     } else {
       this.setState({
@@ -38,7 +38,7 @@ class Filter extends Component {
   }
 
   fetchMapCoordinates(stringLocation) {
-    const urlStringLocation = stringLocation.replace(",","%2C");
+    const urlStringLocation = stringLocation.replace(",", "%2C");
     const url = `https://www.mapquestapi.com/geocoding/v1/address?key=${mapKey}&inFormat=kvp&outFormat=json&location=${urlStringLocation}&thumbMaps=false`;
     const request = new XMLHttpRequest();
     request.open('GET', url);
@@ -63,17 +63,17 @@ class Filter extends Component {
     request.send(null);
   }
 
-  scottishLocationFilter(mapData){
+  scottishLocationFilter(mapData) {
     const locationArray = mapData.results[0].locations
-    return locationArray.filter( location => location.adminArea1 === "GB")[0]
+    return locationArray.filter(location => location.adminArea1 === "GB")[0]
   }
 
   onStringLocation = (inputLocation) => {
-    this.setState( { stringLocation: inputLocation } )
+    this.setState({ stringLocation: inputLocation })
   }
 
   onDistanceSelectChange = (inputDistance) => {
-    this.setState( { distance: inputDistance } )
+    this.setState({ distance: inputDistance })
   }
 
   render() {
@@ -82,10 +82,10 @@ class Filter extends Component {
         onSubmit={this.handleSubmit}>
 
         <LocationFilter
-          onStringLocation = {this.onStringLocation}
-          stringLocation = {this.state.stringLocation}
-          onDistanceSelectChange = {this.onDistanceSelectChange}
-          distance = {this.state.distance}
+          onStringLocation={this.onStringLocation}
+          stringLocation={this.state.stringLocation}
+          onDistanceSelectChange={this.onDistanceSelectChange}
+          distance={this.state.distance}
         />
         <AdvancedFilter />
 

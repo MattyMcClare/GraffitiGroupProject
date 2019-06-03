@@ -1,13 +1,15 @@
 import React from 'react';
 import Artist from './Artist';
 
-const ArtInfoWithName = () => {
+const ArtInfoWithName = ({ handle, signature, location }) => {
     return (
-        <>
-            <Artist />
-            <p>Location</p>
-            <p>Date</p>
-        </>
+        <div className="art-info-with-name">
+            <Artist
+                handle={handle}
+                signature={signature}
+            />
+            <p>{location}</p>
+        </div>
     )
 }
 
