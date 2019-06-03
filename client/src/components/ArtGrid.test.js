@@ -1,7 +1,7 @@
 import React from 'react';
 import ArtGrid from './ArtGrid';
 import ArtBox from './ArtBox';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 
 describe('ArtGrid', () => {
     let wrapper;
@@ -11,7 +11,7 @@ describe('ArtGrid', () => {
     it('should render a <div>', () => {
         console.log(wrapper);
 
-        const divCount = wrapper.find('div').length;
+        const divCount = wrapper.props().find('div').length;
         expect(divCount).toEqual(1);
     });
 
