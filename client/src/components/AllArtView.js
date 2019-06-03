@@ -1,18 +1,27 @@
 import React, { Component } from 'react';
 import ArtGrid from './ArtGrid';
-import Filter from './Filter';
-import Sort from './Sort';
+import Filter from './filters/Filter';
+import Sort from './sorts/Sort';
 
 class AllArtView extends Component {
-    render() {
-        return (
-            <div>
-                <Filter />
-                <Sort />
-                <ArtGrid />
-            </div>
-        )
-    }
+  constructor(props){
+    super(props);
+    this.locationNotFound = this.locationNotFound.bind(this);
+  }
+
+  locationNotFound(){
+
+  }
+
+  render() {
+      return (
+          <div>
+              <Filter displayLocationNotFound = {this.locationNotFound}/>
+              <Sort />
+              <ArtGrid />
+          </div>
+      )
+  }
 }
 
 export default AllArtView;
