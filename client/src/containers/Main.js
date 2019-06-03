@@ -3,6 +3,7 @@ import AllArtView from "../components/AllArtView";
 import ErrorPage from "../components/ErrorPage";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import defaultImage from '../img/default-image.jpg'
+import './Main.css';
 
 class Main extends Component {
   constructor(props) {
@@ -31,29 +32,31 @@ class Main extends Component {
     this.changeSortMethod = this.changeSortMethod.bind(this);
   }
 
-  changeSortMethod(){
+  changeSortMethod() {
     const changedState = !this.state.sortMethod;
-    this.setState({sortMethod: changedState});
+    this.setState({ sortMethod: changedState });
   }
 
   render() {
     return (
-      <Router>
-        <React.Fragment>
-          <Switch>
-            <Route exact path="/"
-              // component={AllArtView}
-              render={() => <AllArtView
-                allArt={this.state.allArt}
-                changeSortMethod = {this.changeSortMethod}
-                sortMethod = {this.state.sortMethod}
+      <div className="main-container">
+        <Router>
+          <React.Fragment>
+            <Switch>
+              <Route exact path="/"
+                // component={AllArtView}
+                render={() => <AllArtView
+                  allArt={this.state.allArt}
+                  changeSortMethod={this.changeSortMethod}
+                  sortMethod={this.state.sortMethod}
                 />
-              }
-            />
-            <Route component={ErrorPage} />
-          </Switch>
-        </React.Fragment>
-      </Router>
+                }
+              />
+              <Route component={ErrorPage} />
+            </Switch>
+          </React.Fragment>
+        </Router>
+      </div>
     );
   }
 }
