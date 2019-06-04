@@ -3,15 +3,15 @@ import AllArtView from "../components/AllArtView";
 import ErrorPage from "../components/ErrorPage";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import defaultImage from '../img/default-image.jpg'
-// import ArtView from '../components/artView/ArtView'
+import ArtView from '../components/artView/ArtView'
 import ModalView from '../components/artView/ModalView'
-
 
 class Main extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      location: null,
       open: true,
       sortMethod: true,
       allArt: [
@@ -84,6 +84,7 @@ class Main extends Component {
     this.onCloseModal = this.onCloseModal.bind(this)
     this.onOpenModal = this.onOpenModal.bind(this)
     this.changeSortMethod = this.changeSortMethod.bind(this);
+
   }
   //SORTING
   changeSortMethod() {
@@ -100,12 +101,33 @@ class Main extends Component {
     this.setState({ open: false });
   };
 
+  previousLocation = this.props.location;
+
+  componentWillUpdate(nextProps) {
+    let { location } = this.state;
+
+    // set previousLocation if props.location is not modal
+    if (
+      nextProps.history.action !== "POP" &&
+      (!location.state || !location.state.modal)
+    ) {
+      this.previousLocation = this.props.location;
+    }
+  }
+
   render() {
+    let { location } = this.state;
+
+    // let isModal = !!(
+    //   location.state &&
+    //   location.state.modal &&
+    //   this.previousLocation !== location
+    // ); // not initial render
     return (
       <Router>
         <React.Fragment>
-          <Switch>
-            <Route exact path="/"
+          <Switch location={false ? this.previousLocation : location}>
+            <Route exact path="/gallery"
               render={() => <AllArtView
                 allArt={this.state.allArt}
                 changeSortMethod={this.changeSortMethod}
@@ -117,8 +139,8 @@ class Main extends Component {
               />
               }
             />
-            <Route path='/art'
-              render={() => <ModalView
+            <Route path='/art/:id'
+              render={() => <ArtView
                 selectedArtView={this.state.selectedArtView}
                 open={this.state.open}
                 onOpenModal={this.onOpenModal}
@@ -128,6 +150,7 @@ class Main extends Component {
             />
             <Route component={ErrorPage} />
           </Switch>
+          {true ? <Route path="/art/:id" component={ModalView} /> : null}
         </React.Fragment>
       </Router>
     );

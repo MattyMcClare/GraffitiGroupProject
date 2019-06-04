@@ -4,9 +4,9 @@ const ArtView = (props) => {
     console.log(props);
 
     return (
-        <div className="modal">
-            <img src={props.selectedArtView.img} alt="default" height="80%" width="80%"></img>
-            <h4>this is Art View Window</h4>
+        <div className="art-view">
+            <img src={props.selectedArtView.img} alt="default" height="400" width="600"></img>
+            <h4>{props.selectedArtView.handle}</h4>
             {/* <p>{props.selectedArtView.location}</p> */}
             {/* <ModalArtGrid grid={} /> */}
         </div>

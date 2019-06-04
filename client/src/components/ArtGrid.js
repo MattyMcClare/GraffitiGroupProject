@@ -1,18 +1,28 @@
 import React from 'react';
 import ArtBox from './ArtBox';
+import { Link } from 'react-router-dom';
 
 
 const ArtGrid = (props) => {
     const artBoxes = props.allArt.map(art => {
         return (
-            <ArtBox
+            <Link
                 key={art.id}
-                img={art.img}
-                handle={art.handle}
-                signature={art.signature}
-                location={art.location}
+                onClick={props.onOpenModal}
+                to={{
+                    pathname: `/art/${art.id}`
+
+                }}
             >
-            </ArtBox>
+                <ArtBox
+                    key={art.id}
+                    img={art.img}
+                    handle={art.handle}
+                    signature={art.signature}
+                    location={art.location}
+                >
+                </ArtBox>
+            </Link>
         )
     });
     return (
