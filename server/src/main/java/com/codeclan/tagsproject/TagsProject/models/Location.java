@@ -26,10 +26,12 @@ public class Location {
     @Column(name="distanceTo")
     private double distanceTo;
 
+    @Column(name="stringLocation")
+    private String stringLocation;
+
     public Location(double latitude, double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
-//        this.distanceTo = distanceTo;
     }
 
     public Location(){
@@ -70,5 +72,13 @@ public class Location {
 
     public double getDistanceTo() {
         return distanceTo;
+    }
+
+    public String getStringLocation() {
+        return stringLocation;
+    }
+
+    public void setStringLocation(String stringLocation) {
+        this.stringLocation = stringLocation;
     }
 }

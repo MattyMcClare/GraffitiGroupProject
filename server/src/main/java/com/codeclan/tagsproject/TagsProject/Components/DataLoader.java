@@ -64,6 +64,9 @@ public class DataLoader implements ApplicationRunner {
 
         Image image3 = new Image(piece3, "https://www.instagram.com/p/BjJxuVtAZUm/");
 
+        Dundee.setStringLocation("Dundee");
+        Glasgow.setStringLocation("Glasgow");
+        Edinburgh.setStringLocation("Edinburgh");
         locationRepository.save(Dundee);
         locationRepository.save(Glasgow);
         locationRepository.save(Edinburgh);
