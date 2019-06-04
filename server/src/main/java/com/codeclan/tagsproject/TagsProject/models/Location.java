@@ -1,6 +1,7 @@
 package com.codeclan.tagsproject.TagsProject.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
@@ -18,13 +19,19 @@ public class Location {
     @Column(name="longitude")
     private double longitude;
 
+    @JsonIgnoreProperties("location")
     @OneToOne(mappedBy = "location", fetch = FetchType.LAZY)
     private Art art;
+
+    @Column(name="distanceTo")
+    private double distanceTo;
+
+    @Column(name="stringLocation")
+    private String stringLocation;
 
     public Location(double latitude, double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
-
     }
 
     public Location(){
@@ -53,5 +60,25 @@ public class Location {
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
+    }
+
+    public Art getArt() {
+        return art;
+    }
+
+    public void setDistanceTo(double distanceTo) {
+        this.distanceTo = distanceTo;
+    }
+
+    public double getDistanceTo() {
+        return distanceTo;
+    }
+
+    public String getStringLocation() {
+        return stringLocation;
+    }
+
+    public void setStringLocation(String stringLocation) {
+        this.stringLocation = stringLocation;
     }
 }

@@ -16,9 +16,6 @@ public interface EmbedArtForArtist {
 
     String getHandle();
     String getSignature();
-//
-//   public ArrayList<Image> getImages();
-//   public StyleType getStyle();
-//   public String getDescription();
+
 
 }

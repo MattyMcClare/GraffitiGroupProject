@@ -28,8 +28,7 @@ class Filter extends Component {
     }
 
     //Call API for search items
-    // this.props.callSearch();
-
+    this.props.handleSearchSubmit();
   }
 
   fetchMapCoordinates(stringLocation) {
