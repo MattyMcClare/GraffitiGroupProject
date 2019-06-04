@@ -44,12 +44,8 @@ class Main extends Component {
 
   changeSortMethod() {
     const changedState = !this.state.sortMethod;
-<<<<<<< HEAD
-    this.setState({ sortMethod: changedState });
-=======
     this.setState({sortMethod: changedState});
     this.handleSearchSubmit();
->>>>>>> features/frontapiaccess-2
   }
 
   setLocation(latLong){
@@ -85,15 +81,9 @@ class Main extends Component {
                 setDistance = {this.setDistance}
                 handleSearchSubmit = {this.handleSearchSubmit}
                 />
-<<<<<<< HEAD
-                }
-              />
-            <Route component={ErrorPage} />
-=======
               }
             />
             <Route component={ErrorView} />
->>>>>>> features/frontapiaccess-2
           </Switch>
         </React.Fragment>
       </Router>
