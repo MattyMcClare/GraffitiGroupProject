@@ -235,7 +235,6 @@ public class DataLoader implements ApplicationRunner {
         Image image43 = new Image(piece43, "");
         Image image44 = new Image(piece44, "");
         Image image45 = new Image(piece45, "");
-        Image image46 = new Image(piece46, "");
 
         CablsWyndHouse.setStringLocation("CablsWyndHouse");
         QueenCharlotteStreet.setStringLocation("QueenCharlotteStreet");
@@ -376,7 +375,6 @@ public class DataLoader implements ApplicationRunner {
         imageRepo.save(image43);
         imageRepo.save(image44);
         imageRepo.save(image45);
-        imageRepo.save(image46);
 
         piece01.getImages().add(image01);
         piece02.getImages().add(image02);
