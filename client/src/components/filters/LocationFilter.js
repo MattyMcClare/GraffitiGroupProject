@@ -31,9 +31,10 @@ class LocationFilter extends Component {
 
   render() {
     return (
-      <div className="location-filter">
+      <React.Fragment>
         <GeolocationButton handleGeolocatorClick={this.handleGeolocatorClick} />
         <input
+          className="search-box"
           type="text"
           name="address"
           placeholder="Enter location or postcode..."
@@ -41,7 +42,7 @@ class LocationFilter extends Component {
           onChange={this.handleStringLocationInput}
         />
         <select name="distance-filter" onChange={this.handleDistanceSelectChange}>
-          <option value={0}>Distance from Location</option>
+          <option value={0}>Distance &darr;</option>
           <option value={1}>less than 1km</option>
           <option value={3}>less than 3km</option>
           <option value={5}>less than 5km</option>
@@ -49,7 +50,7 @@ class LocationFilter extends Component {
           <option value={50}>less than 50km</option>
           <option value={0}>All of Scotland</option>
         </select>
-      </div>
+      </React.Fragment>
     )
   }
 

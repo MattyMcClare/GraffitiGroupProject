@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import SearchView from "../components/SearchView";
 import ErrorView from "../components/ErrorView";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import defaultImage from '../img/default-image.jpg'
+import logoImage from '../img/logo.png'
 import './Main.css';
 
 class Main extends Component {
+
   constructor(props) {
     super(props);
-
     this.state = {
       sortMethod: true,
       location: {
@@ -18,7 +18,6 @@ class Main extends Component {
       distance: 0,
       allArt: [],
     }
-
     this.changeSortMethod = this.changeSortMethod.bind(this);
     this.setDefaultLocation = this.setDefaultLocation.bind(this);
     this.setLocation = this.setLocation.bind(this);
@@ -67,8 +66,9 @@ class Main extends Component {
 
   render() {
     return (
-      <Router className="main-container">
-        <React.Fragment>
+      <Router>
+        <div className="main-container">
+          <img className="logo-image" src={logoImage} alt="tagslogo"/>
           <Switch>
             <Route exact path="/"
               // component={AllArtView}
@@ -85,7 +85,7 @@ class Main extends Component {
             />
             <Route component={ErrorView} />
           </Switch>
-        </React.Fragment>
+        </div>
       </Router>
     );
   }

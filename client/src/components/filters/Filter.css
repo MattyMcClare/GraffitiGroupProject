@@ -1,4 +1,61 @@
 .filter-form {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    vertical-align: middle;
+    width: 100%;
+}
+
+.main-filter{
+  display:grid;
+  grid-template-columns: 4em 1fr 8em 8em;
+  width: 100%;
+}
+
+input, button, select {
+  font-size: 0.9rem;
+  font-weight: 700;
+  box-sizing: border-box;
+  padding: 0 1em 0 1em;
+  margin: 0.5em;
+  background-color: white;
+  height: 3rem;
+  border: 3px solid black;
+}
+
+select{
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px
+}
+
+button:hover, select:hover, .submit:hover, .link:hover{
+  background-color: lightgrey;
+}
+
+.link{
+  margin: 0.5em;
+  border-bottom: 3px solid yellow;
+  font-weight: 700;
+}
+
+.link:hover{
+  margin: 0.5em;
+}
+
+input:focus {
+    outline:none;
+    background: inherit;
+}
+
+input:-internal-autofill-selected {
+  outline:none;
+  background: inherit;
+}
+
+.submit{
+  background-color: yellow;
+  border-radius: 1.5rem;
+  width: 100%;
 }

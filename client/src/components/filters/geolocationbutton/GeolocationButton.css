@@ -1,6 +1,7 @@
 .image-button {
-  height: 3em;
-  width: 3em;
+  padding: 0;
+  height: 3rem;
+  width: 3rem;
 }
 
 .image-button img{
