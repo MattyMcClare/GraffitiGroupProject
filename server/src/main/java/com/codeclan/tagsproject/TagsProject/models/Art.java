@@ -1,17 +1,13 @@
 package com.codeclan.tagsproject.TagsProject.models;
 
-import com.codeclan.tagsproject.TagsProject.Converter.LocalDateConverter;
 import com.codeclan.tagsproject.TagsProject.Enums.StyleType;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.apache.tomcat.jni.Local;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.sql.Date;
 import java.util.List;
 
 @Entity
