@@ -38,6 +38,7 @@ public class CalculateDistance {
         if (distance != 0){
         this.setDistance(distance);}
 
+
         List<Location> locations = locationRepository.findAll();
         double latMetersPerDegree = 111341;
         double longMetersPerDegree = 62473;
@@ -53,10 +54,13 @@ public class CalculateDistance {
             double distanceFromPoint = distanceFromPointInMetres/1000;
             location.setDistanceTo(distanceFromPoint);
 
-            if (distanceFromPoint <= distance)
+
+
+            if (distanceFromPoint <= this.distance)
                     results.add(location);
 
         }
+
         return results;
     }
 

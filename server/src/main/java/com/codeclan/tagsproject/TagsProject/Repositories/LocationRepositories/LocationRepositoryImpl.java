@@ -27,7 +27,6 @@ public class LocationRepositoryImpl implements LocationRepositoryCustom{
        Session session = entityManager.unwrap(Session.class);
        try {
           result = calculateDistance.calculateDistance(latitude, longitude, distance);
-
        } catch (HibernateException ex){
            ex.printStackTrace();
        } finally {
