@@ -1,10 +1,10 @@
 import React from 'react';
 
-const ArtInfoNoName = () => {
+const ArtInfoNoName = (props) => {
     return (
         <div className="art-info-no-name">
-            <p>Location</p>
-            <p>Date</p>
+            <p>{props.location}</p>
+            <p>{props.date}</p>
         </div>
     )
 }

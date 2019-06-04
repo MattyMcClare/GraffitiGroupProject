@@ -1,10 +1,11 @@
 import React from 'react';
 import ArtInfoWithName from './ArtInfoWithName';
-import ArtView from './artView/ArtView'
+import { Link } from 'react-router-dom';
 
 const ArtBox = (props) => {
     return (
         <div className="art-box">
+            <Link to="/art">More</Link>
             <div className="art-box-image">
                 <img src={props.img} alt="default" height="200" width="200"></img>
             </div>
@@ -15,15 +16,10 @@ const ArtBox = (props) => {
                     location={props.location}
                 >
                 </ArtInfoWithName>
-                <ArtView
-                    img={props.img}
-                    handle={props.handle}
-                    location={props.location}
-                />
             </div>
         </div>
     )
-
 }
+
 
 export default ArtBox;

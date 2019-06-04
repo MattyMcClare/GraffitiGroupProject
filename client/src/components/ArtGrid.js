@@ -2,8 +2,8 @@ import React from 'react';
 import ArtBox from './ArtBox';
 
 
-const ArtGrid = ({ allArt }) => {
-    const artBoxes = allArt.map(art => {
+const ArtGrid = (props) => {
+    const artBoxes = props.allArt.map(art => {
         return (
             <ArtBox
                 key={art.id}

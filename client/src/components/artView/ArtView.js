@@ -1,35 +1,17 @@
 import React from "react";
-import { render } from "react-dom";
-import Modal from "react-responsive-modal";
 
-class ArtView extends React.Component {
-    state = {
-        open: false
-    };
+const ArtView = (props) => {
+    console.log(props);
 
-    onOpenModal = () => {
-        this.setState({ open: true });
-    };
+    return (
+        <div className="modal">
+            <img src={props.selectedArtView.img} alt="default" height="80%" width="80%"></img>
+            <h4>this is Art View Window</h4>
+            {/* <p>{props.selectedArtView.location}</p> */}
+            {/* <ModalArtGrid grid={} /> */}
+        </div>
+    );
 
-    onCloseModal = () => {
-        this.setState({ open: false });
-    };
-
-    render() {
-        const { open } = this.state;
-        return (
-            <div className="modal">
-                <button onClick={this.onOpenModal}>More</button>
-                <Modal open={open} onClose={this.onCloseModal}>
-                    <img src={this.props.img} alt="default" height="400" width="600"></img>
-                    <h4>{this.props.handle}</h4>
-                    <p>{this.props.location}</p>
-                </Modal>
-            </div>
-        );
-    }
 }
-
-render(<ArtView />, document.getElementById("root"));
 
 export default ArtView;

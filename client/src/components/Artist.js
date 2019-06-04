@@ -1,5 +1,4 @@
 import React from 'react';
-import defaultImage from '../img/default-image.jpg'
 
 const Artist = ({ handle, signature }) => {
     return (
