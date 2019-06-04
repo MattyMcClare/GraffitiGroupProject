@@ -5,16 +5,14 @@ import com.codeclan.tagsproject.TagsProject.Repositories.ArtistRepositories.Arti
 import com.codeclan.tagsproject.TagsProject.models.Art;
 import com.codeclan.tagsproject.TagsProject.models.Location;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/art")
 public class ArtController {
