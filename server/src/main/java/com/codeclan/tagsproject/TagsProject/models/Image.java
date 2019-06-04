@@ -2,8 +2,10 @@ package com.codeclan.tagsproject.TagsProject.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cascade;
+import org.hibernate.hql.internal.ast.tree.BinaryLogicOperatorNode;
 
 import javax.persistence.*;
+import java.sql.Blob;
 
 @Entity
 @Table(name="images")
@@ -19,13 +21,17 @@ public class Image {
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private Art art;
 
-    @Column(name = "url")
-    private String url;
+    @Column(name = "BLOBName")
+    private String name;
 
-    public Image(Art art, String url) {
+    @Column(name = "BLOBData")
+    private Blob data;
+
+    public Image(Art art, Blob data, String name) {
         this.id = id;
         this.art = art;
-        this.url = url;
+        this.data = data;
+        this.name = name;
     }
 
     public Image() {
@@ -47,11 +53,11 @@ public class Image {
         this.art = art;
     }
 
-    public String getUrl() {
-        return url;
+    public Blob getData() {
+        return data;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setData(Blob data) {
+        this.data = data;
     }
 }

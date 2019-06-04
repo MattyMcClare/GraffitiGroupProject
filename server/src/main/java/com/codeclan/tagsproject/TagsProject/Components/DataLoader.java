@@ -14,6 +14,10 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -62,21 +66,78 @@ public class DataLoader implements ApplicationRunner {
 
         Art piece3 = new Art(Salvador, StyleType.STENCIL, "Paint Roller Girl", date2);
 
-        Image image1 = new Image(piece1, "https://www.instagram.com/p/Bs8Xt7BgfLM/");
+        Blob blob = new Blob() {
+            @Override
+            public long length() throws SQLException {
+                return 0;
+            }
 
-        Image image2 = new Image(piece2, "https://www.instagram.com/p/Bsn6PN4gzfw/");
+            @Override
+            public byte[] getBytes(long pos, int length) throws SQLException {
+                return new byte[0];
+            }
 
-        Image image3 = new Image(piece3, "https://www.instagram.com/p/BjJxuVtAZUm/");
+            @Override
+            public InputStream getBinaryStream() throws SQLException {
+                return null;
+            }
+
+            @Override
+            public long position(byte[] pattern, long start) throws SQLException {
+                return 0;
+            }
+
+            @Override
+            public long position(Blob pattern, long start) throws SQLException {
+                return 0;
+            }
+
+            @Override
+            public int setBytes(long pos, byte[] bytes) throws SQLException {
+                return 0;
+            }
+
+            @Override
+            public int setBytes(long pos, byte[] bytes, int offset, int len) throws SQLException {
+                return 0;
+            }
+
+            @Override
+            public OutputStream setBinaryStream(long pos) throws SQLException {
+                return null;
+            }
+
+            @Override
+            public void truncate(long len) throws SQLException {
+
+            }
+
+            @Override
+            public void free() throws SQLException {
+
+            }
+
+            @Override
+            public InputStream getBinaryStream(long pos, long length) throws SQLException {
+                return null;
+            }
+        }
+
+        Image image1 = new Image(piece1, "akjsd" , "need a lift");
+
+//        Image image2 = new Image(piece2, "https://www.instagram.com/p/Bsn6PN4gzfw/");
+//
+//        Image image3 = new Image(piece3, "https://www.instagram.com/p/BjJxuVtAZUm/");
 
         locationRepository.save(Dundee);
         locationRepository.save(Glasgow);
         locationRepository.save(Edinburgh);
         imageRepo.save(image1);
-        imageRepo.save(image2);
-        imageRepo.save(image3);
+//        imageRepo.save(image2);
+//        imageRepo.save(image3);
         piece1.getImages().add(image1);
-        piece2.getImages().add(image2);
-        piece3.getImages().add(image3);
+//        piece2.getImages().add(image2);
+//        piece3.getImages().add(image3);
         piece1.setLocation(Edinburgh);
         piece2.setLocation(Glasgow);
         piece3.setLocation(Dundee);
