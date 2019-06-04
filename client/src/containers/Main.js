@@ -65,18 +65,6 @@ class Main extends Component {
 
   render() {
     return (
-<<<<<<< HEAD
-      <div className="main-container">
-        <Router>
-          <React.Fragment>
-            <Switch>
-              <Route exact path="/"
-                // component={AllArtView}
-                render={() => <AllArtView
-                  allArt={this.state.allArt}
-                  changeSortMethod={this.changeSortMethod}
-                  sortMethod={this.state.sortMethod}
-=======
       <Router className="main-container">
         <React.Fragment>
           <Switch>
@@ -89,15 +77,13 @@ class Main extends Component {
                 setLocation = {this.setLocation}
                 setDefaultLocation = {this.setDefaultLocation}
                 setDistance = {this.setDistance}
->>>>>>> develop
                 />
                 }
               />
-              <Route component={ErrorPage} />
-            </Switch>
-          </React.Fragment>
-        </Router>
-      </div>
+            <Route component={ErrorPage} />
+          </Switch>
+        </React.Fragment>
+      </Router>
     );
   }
 }

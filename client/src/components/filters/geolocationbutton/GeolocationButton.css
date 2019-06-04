@@ -1,0 +1,9 @@
+.image-button {
+  height: 3em;
+  width: 3em;
+}
+
+.image-button img{
+  height: 80%;
+  width: auto;
+}
