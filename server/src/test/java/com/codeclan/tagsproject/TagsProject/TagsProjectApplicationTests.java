@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -69,5 +70,14 @@ public class TagsProjectApplicationTests {
 		List<Image> found = imageRepo.findAll();
 		assertEquals(3, found.size());
 	}
+
+	@Test
+	public void canFindAllByDateUploadedBetween(){
+		LocalDate startDate = LocalDate.now().minusDays(7);
+		LocalDate endDate = LocalDate.now();
+		List <Art> found = artRepository.findAllByDateUploadedBetween(startDate, endDate);
+		assertEquals(1, found.size());
+	}
+
 
 }

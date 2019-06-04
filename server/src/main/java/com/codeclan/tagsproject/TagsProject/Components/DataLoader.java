@@ -50,13 +50,17 @@ public class DataLoader implements ApplicationRunner {
 
         Artist Salvador = new Artist("Dali", "https://www.instagram.com/p/BuQtpMIALY9/", "Real straight shooter.");
 
-        LocalDate date1 = LocalDate.now();
+        LocalDate date1 = LocalDate.of(2018, 12, 2);
+
+        LocalDate date2 = LocalDate.of(2019, 5, 22);
+
+        LocalDate date3 = LocalDate.of(2019, 6, 2);
 
         Art piece1 = new Art(JimmyMcGee, StyleType.PIECE, "Pure piece eh?", date1);
 
-        Art piece2 = new Art(Banksy, StyleType.PASTEUP, "Hedgehog with Ennui", date1);
+        Art piece2 = new Art(Banksy, StyleType.PASTEUP, "Hedgehog with Ennui", date3);
 
-        Art piece3 = new Art(Salvador, StyleType.STENCIL, "Paint Roller Girl", date1);
+        Art piece3 = new Art(Salvador, StyleType.STENCIL, "Paint Roller Girl", date2);
 
         Image image1 = new Image(piece1, "https://www.instagram.com/p/Bs8Xt7BgfLM/");
 
@@ -79,7 +83,6 @@ public class DataLoader implements ApplicationRunner {
         artRepository.save(piece3);
         artRepository.save(piece2);
         artRepository.save(piece1);
-
         JimmyMcGee.getArt().add(piece1);
         Banksy.getArt().add(piece2);
         Salvador.getArt().add(piece3);
