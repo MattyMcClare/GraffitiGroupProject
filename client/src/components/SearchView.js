@@ -3,7 +3,7 @@ import ArtGrid from './ArtGrid';
 import Filter from './filters/Filter';
 import Sort from './sorts/Sort';
 
-const AllArtView = (props) => {
+const SearchView = (props) => {
 
     const locationNotFound = () => {
 
@@ -16,6 +16,7 @@ const AllArtView = (props) => {
               setLocation = {props.setLocation}
               setDefaultLocation = {props.setDefaultLocation}
               setDistance = {props.setDistance}
+              handleSearchSubmit = {props.handleSearchSubmit}
             />
             <Sort
               changeSortMethod = {props.changeSortMethod}
@@ -27,4 +28,4 @@ const AllArtView = (props) => {
 
 }
 
-export default AllArtView;
+export default SearchView;
