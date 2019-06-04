@@ -11,8 +11,8 @@ class Main extends Component {
     this.state = {
       sortMethod: true,
       location: {
-        lat: 55.95206,
-        long: -3.19648
+        lat: 0,
+        long: 0
       },
       distance: 0,
 
@@ -52,8 +52,8 @@ class Main extends Component {
   setDefaultLocation(){
     this.setState({
       location: {
-        lat: 55.95206,
-        long: -3.19648
+        lat: 0,
+        long: 0
       }
     });
   }
