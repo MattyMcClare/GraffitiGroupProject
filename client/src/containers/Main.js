@@ -11,6 +11,12 @@ class Main extends Component {
 
     this.state = {
       sortMethod: true,
+      location: {
+        lat: 55.95206,
+        long: -3.19648
+      },
+      distance: 0,
+
       allArt: [
         {
           id: 1,
@@ -30,6 +36,9 @@ class Main extends Component {
     }
 
     this.changeSortMethod = this.changeSortMethod.bind(this);
+    this.setDefaultLocation = this.setDefaultLocation.bind(this);
+    this.setLocation = this.setLocation.bind(this);
+    this.setDistance = this.setDistance.bind(this);
   }
 
   changeSortMethod() {
@@ -37,8 +46,26 @@ class Main extends Component {
     this.setState({ sortMethod: changedState });
   }
 
+  setLocation(latLong){
+    this.setState({location: latLong});
+  }
+
+  setDefaultLocation(){
+    this.setState({
+      location: {
+        lat: 55.95206,
+        long: -3.19648
+      }
+    });
+  }
+
+  setDistance(inputDistance){
+    this.setState({distance: inputDistance})
+  }
+
   render() {
     return (
+<<<<<<< HEAD
       <div className="main-container">
         <Router>
           <React.Fragment>
@@ -49,6 +76,20 @@ class Main extends Component {
                   allArt={this.state.allArt}
                   changeSortMethod={this.changeSortMethod}
                   sortMethod={this.state.sortMethod}
+=======
+      <Router className="main-container">
+        <React.Fragment>
+          <Switch>
+            <Route exact path="/"
+              // component={AllArtView}
+              render={() => <AllArtView
+                allArt={this.state.allArt}
+                changeSortMethod = {this.changeSortMethod}
+                sortMethod = {this.state.sortMethod}
+                setLocation = {this.setLocation}
+                setDefaultLocation = {this.setDefaultLocation}
+                setDistance = {this.setDistance}
+>>>>>>> develop
                 />
                 }
               />

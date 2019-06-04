@@ -11,10 +11,6 @@ class Filter extends Component {
     super(props);
     this.state = {
       stringLocation: '',
-      location: {
-        lat: 0,
-        long: 0
-      },
       distance: 0
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,13 +24,11 @@ class Filter extends Component {
     if (this.state.stringLocation !== '') {
       this.fetchMapCoordinates(this.state.stringLocation)
     } else {
-      this.setState({
-        location: {
-          lat: 0,
-          long: 0
-        }
-      });
+      this.props.setDefaultLocation();
     }
+
+    //Call API for search items
+    // this.props.callSearch();
 
   }
 
@@ -50,13 +44,12 @@ class Filter extends Component {
         const mapData = JSON.parse(jsonData);
         const filterData = this.scottishLocationFilter(mapData);
         if (filterData !== undefined) {
-          this.setState({
-            location: {
+          this.props.setLocation({
               lat: filterData.latLng.lat,
               long: filterData.latLng.lng
-            }
-          });
+            });
         } else {
+          this.props.setDefaultLocation();
           this.props.locationNotFound();
         }
       }
@@ -74,7 +67,7 @@ class Filter extends Component {
   }
 
   onDistanceSelectChange = (inputDistance) => {
-    this.setState({ distance: inputDistance })
+    this.props.setDistance(inputDistance);
   }
 
   render() {

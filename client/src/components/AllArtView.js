@@ -11,8 +11,13 @@ const AllArtView = (props) => {
     }
 
     return (
-        <div className="all-art-view">
-            <Filter displayLocationNotFound={locationNotFound()} />
+        <div>
+            <Filter
+              displayLocationNotFound = {locationNotFound()}
+              setLocation = {props.setLocation}
+              setDefaultLocation = {props.setDefaultLocation}
+              setDistance = {props.setDistance}
+            />
             <Sort
                 changeSortMethod={props.changeSortMethod}
                 sortMethod={props.sortMethod}
