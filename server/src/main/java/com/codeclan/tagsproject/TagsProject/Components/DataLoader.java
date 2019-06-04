@@ -58,9 +58,9 @@ public class DataLoader implements ApplicationRunner {
 
         Art piece1 = new Art(JimmyMcGee, StyleType.PIECE, "Pure piece eh?", date1);
 
-        Art piece2 = new Art(Banksy, StyleType.PASTEUP, "Hedgehog with Ennui", date2);
+        Art piece2 = new Art(Banksy, StyleType.PASTEUP, "Hedgehog with Ennui", date3);
 
-        Art piece3 = new Art(Salvador, StyleType.STENCIL, "Paint Roller Girl", date3);
+        Art piece3 = new Art(Salvador, StyleType.STENCIL, "Paint Roller Girl", date2);
 
         Image image1 = new Image(piece1, "https://www.instagram.com/p/Bs8Xt7BgfLM/");
 

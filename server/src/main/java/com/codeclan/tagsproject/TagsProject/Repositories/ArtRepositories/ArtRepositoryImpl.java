@@ -34,8 +34,4 @@ public class ArtRepositoryImpl implements ArtRepositoryCustom {
         }
         return result;
     }
-
 }
-
-
-
