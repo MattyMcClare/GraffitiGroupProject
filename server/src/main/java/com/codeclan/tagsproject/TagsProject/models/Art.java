@@ -110,4 +110,13 @@ public class Art {
     public void setDateUploaded(LocalDate dateUploaded) {
         this.dateUploaded = dateUploaded;
     }
+
+    public String getImageUrl(){
+        String returnedUrl = null;
+        for (Image image: images
+             ) {
+           returnedUrl = image.getUrl();
+        }
+        return returnedUrl;
+    }
 }
