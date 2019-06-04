@@ -26,7 +26,7 @@ public class CalculateDistance {
     public CalculateDistance(){
         this.lat = 55.94861;
         this.longi = -3.20083;
-        this.distance = 5;
+        this.distance = 500;
     }
 
     public List<Location> calculation(double latitude, double longitude, int distance){
@@ -37,38 +37,26 @@ public class CalculateDistance {
 
         if (distance != 0){
         this.setDistance(distance);}
-//        System.out.println("lat = " + lat);
-//        System.out.println("longitude = "+longi);
+
         List<Location> locations = locationRepository.findAll();
         double latMetersPerDegree = 111341;
         double longMetersPerDegree = 62473;
         List<Location> results = new ArrayList<>();
+
         for (Location location: locations) {
            double latCalc = ((this.lat - location.getLatitude()) * latMetersPerDegree);
-//           System.out.println("location latitude = " + location.getLatitude());
-//           System.out.println("Lat Calculation = " + latCalc);
             double longCalc = ((this.longi - location.getLongitude()) * longMetersPerDegree);
-//            System.out.println("location longitude = " + location.getLongitude());
-//            System.out.println("Long Calculation =" + longCalc);
             double latCalcSq = (latCalc * latCalc);
-//            System.out.println("Lat Calc squared =" + latCalcSq);
             double longCalcSq = (longCalc * longCalc);
-//            System.out.println("Long Calc squared =" + longCalcSq);
             double x = latCalcSq + longCalcSq;
-//            System.out.println("x =" + x);
             double distanceFromPointInMetres = Math.sqrt(x);
-//            System.out.println("distanceFromPointInMetres =" + distanceFromPointInMetres);
             double distanceFromPoint = distanceFromPointInMetres/1000;
             location.setDistanceTo(distanceFromPoint);
-//            System.out.println(location.getDistanceTo());
-//            System.out.println("distancefrompoint = "+distanceFromPoint);
-//            System.out.println("distance = "+ distance);
 
             if (distanceFromPoint <= distance)
                     results.add(location);
 
         }
-        System.out.println(results);
         return results;
     }
 

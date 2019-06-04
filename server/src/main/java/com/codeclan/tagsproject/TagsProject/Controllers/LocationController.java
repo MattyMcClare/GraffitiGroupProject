@@ -20,7 +20,7 @@ public class LocationController {
     @Autowired
     LocationRepository locationRepository;
 
-    @GetMapping(value = "/{latitude}/{longitude}/{distance}")
+    @GetMapping(value = "sortbydate/lat={latitude}/long={longitude}/dis={distance}")
     public List<Location> getAllArtWithinDistance (@PathVariable("latitude") double latitude, @PathVariable("longitude") double longitude,@PathVariable("distance") int distance) {
         List<Location> unsortedResult = locationRepository.getAllArtWithinDistance(latitude, longitude, distance);
         List<Location> sortedResult = unsortedResult.stream().sorted(Comparator.comparing(Location::getDistanceTo)).collect(Collectors.toList());
