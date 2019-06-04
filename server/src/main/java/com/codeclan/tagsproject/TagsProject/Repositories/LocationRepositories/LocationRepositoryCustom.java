@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface LocationRepositoryCustom {
     List<Location> getAllArtWithinDistance(double latitude, double longitude, int distance);
+
 }

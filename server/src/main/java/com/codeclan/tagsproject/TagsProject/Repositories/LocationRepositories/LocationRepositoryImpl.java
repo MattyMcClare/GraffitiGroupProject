@@ -35,4 +35,5 @@ public class LocationRepositoryImpl implements LocationRepositoryCustom{
        }
        return result;
     }
+
 }
