@@ -17,4 +17,5 @@ public interface EmbedArtForArtist {
     String getHandle();
     String getSignature();
 
+
 }

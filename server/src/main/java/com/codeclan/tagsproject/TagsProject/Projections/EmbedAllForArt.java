@@ -13,6 +13,6 @@ public interface EmbedAllForArt {
     public Artist getArtist();
     public Location getLocation();
     public List<Image> getImages();
-    public Art.images.getUrl();
+    String getImageUrl();
 
 }
