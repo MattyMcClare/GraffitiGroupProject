@@ -17,7 +17,7 @@ class Main extends Component {
         lat: 0,
         long: 0
       },
-      distance: 0,
+      distance: 500,
       allArt: [],
     }
     this.changeSortMethod = this.changeSortMethod.bind(this);
@@ -29,7 +29,7 @@ class Main extends Component {
 
   handleSearchSubmit() {
     const sortBy = this.state.sortMethod ? 'sortbydate' : 'sortbydistance'
-    const url = `http://localhost:8080/locations/${sortBy}/lat=${this.state.location.lat}/long=${this.state.location.long}/dis=${this.state.distance}`;
+    const url = `http://localhost:8080/locations/${sortBy}/lat=${this.state.location.lat}/long=${this.state.location.long}/dis=${this.state.distance}/`;
     const request = new XMLHttpRequest();
     request.open('GET', url);
 
@@ -38,6 +38,7 @@ class Main extends Component {
       const jsonString = request.responseText;
       const data = JSON.parse(jsonString);
       this.setState({allArt: data})
+      console.log(this.state.allArt);
     });
 
     request.send();
@@ -69,31 +70,33 @@ class Main extends Component {
   render() {
     return (
       <Router>
-        <Switch>
+        <React.Fragment>
           <div className="main-container">
             <img className="logo-image" src={logoImage} alt="tagslogo"/>
             <NavBar />
             <div className="body-content">
-            <Route exact path="/"
-              // component={AllArtView}
-              render={() => <SearchView
-                allArt={this.state.allArt}
-                changeSortMethod = {this.changeSortMethod}
-                sortMethod = {this.state.sortMethod}
-                setLocation = {this.setLocation}
-                setDefaultLocation = {this.setDefaultLocation}
-                setDistance = {this.setDistance}
-                handleSearchSubmit = {this.handleSearchSubmit}
-                />
-                }
-              />
-              <Route path="/about"
-                component = {About}
-              />
-              <Route component={ErrorView} />
+              <Switch>
+                  <Route exact path="/"
+                    // component={AllArtView}
+                    render={() => <SearchView
+                      allArt={this.state.allArt}
+                      changeSortMethod = {this.changeSortMethod}
+                      sortMethod = {this.state.sortMethod}
+                      setLocation = {this.setLocation}
+                      setDefaultLocation = {this.setDefaultLocation}
+                      setDistance = {this.setDistance}
+                      handleSearchSubmit = {this.handleSearchSubmit}
+                      />
+                      }
+                    />
+                    <Route path="/about"
+                      component = {About}
+                    />
+                <Route component={ErrorView} />
+              </Switch>
             </div>
           </div>
-        </Switch>
+        </React.Fragment>
       </Router>
     );
   }

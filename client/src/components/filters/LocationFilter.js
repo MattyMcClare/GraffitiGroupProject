@@ -42,13 +42,14 @@ class LocationFilter extends Component {
           onChange={this.handleStringLocationInput}
         />
         <select name="distance-filter" onChange={this.handleDistanceSelectChange}>
-          <option value={0}>Distance &darr;</option>
-          <option value={1}>less than 1km</option>
-          <option value={3}>less than 3km</option>
-          <option value={5}>less than 5km</option>
-          <option value={10}>less than 10km</option>
-          <option value={50}>less than 50km</option>
-          <option value={0}>All of Scotland</option>
+          <option value={500}>Distance &darr;</option>
+          <option value={1}>under 1km</option>
+          <option value={5}>under 5km</option>
+          <option value={25}>under 25km</option>
+          <option value={50}>under 50km</option>
+          <option value={100}>under 100km</option>
+          <option value={200}>under 200km</option>
+          <option value={500}>All of Scotland</option>
         </select>
       </React.Fragment>
     )

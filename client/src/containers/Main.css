@@ -3,6 +3,10 @@
   grid-template-columns: 1fr minmax(640px, 1080px) 1fr;
 }
 
+.art-styles{
+  max-width: 480px;
+}
+
 .logo-image{
   grid-column: 1/span 1;
   height: 8rem;
