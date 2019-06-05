@@ -13,9 +13,11 @@ p{
 }
 
 .logo-image{
+  position: fixed;
   grid-column: 1/span 1;
   height: 8rem;
   margin: 1.5rem;
+  z-index: 10;
 }
 
 .body-content{
@@ -47,6 +49,7 @@ p{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   width: 100%;
+  grid-template-rows: flow;
 }
 
 .art-box{
@@ -56,6 +59,58 @@ p{
 
 .art-box img{
   width: 100%;
+  overflow: hidden;
   border-bottom: 3px solid black;
+}
 
+.art-box .art-text{
+  display: inline-flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.art-box:hover{
+  background-color: lightgrey;
+}
+
+.art-text p{
+  display: block;
+  color: black;
+  text-decoration: none;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+a{
+  text-decoration: none;
+}
+
+.background-image{
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./background.png');
+  background-size: cover;
+  z-index: -1;
+}
+
+.background-image h1{
+  margin-top: 24vh;
+  font-size: 4em;
+  color: white;
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.background-image .filter-form{
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
+  background: white;
+  padding: 2rem 2rem 2rem 2rem
 }

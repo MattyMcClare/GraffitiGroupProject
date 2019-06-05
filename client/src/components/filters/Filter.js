@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AdvancedFilter from './AdvancedFilter';
 import LocationFilter from './LocationFilter';
+import { Link } from "react-router-dom";
 import './Filter.css'
 
 import mapKey from '../../keys.js';

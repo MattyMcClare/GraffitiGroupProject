@@ -7,8 +7,10 @@ const ArtBox = (props) => {
   return (
       <div className="art-box">
           <img src={source} alt={props.description}></img>
-          <p>{props.location}</p>
-          <p>{props.date}</p>
+          <div className="art-text">
+            <p><strong>{props.location}</strong></p>
+            <p>{props.date}</p>
+          </div>
       </div>
   )
 }

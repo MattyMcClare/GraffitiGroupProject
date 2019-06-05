@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import SearchView from "../components/SearchView";
 import ErrorView from "../components/ErrorView";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import ArtView from '../components/artView/ArtView';
 import NavBar from "./NavBar.js"
 import About from "./About.js"
+import Filter from "../components/filters/Filter.js"
 import logoImage from '../img/logo.png'
 import './Main.css';
 
@@ -13,6 +14,7 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      toAllArtView: false,
       sortMethod: true,
       location: {
         lat: 0,
@@ -42,7 +44,11 @@ class Main extends Component {
   //     this.previousLocation = this.props.location;
   //   }
 
-  handleSearchSubmit() {
+  handleSearchSubmit(){
+    this.setState({toAllArtView: true}, ()=>{ this.handleSearchQuery() })
+  }
+
+  handleSearchQuery() {
     const sortBy = this.state.sortMethod ? 'sortbydate' : 'sortbydistance'
     const url = `http://localhost:8080/locations/${sortBy}/lat=${this.state.location.lat}/long=${this.state.location.long}/dis=${this.state.distance}/`;
     const request = new XMLHttpRequest();
@@ -87,22 +93,33 @@ class Main extends Component {
 
 
   render() {
-    // let { location } = this.state;
-
-    // let isModal = !!(
-    //   location.state &&
-    //   location.state.modal &&
-    //   this.previousLocation !== location
-    // ); // not initial render
     return (
       <Router>
       <React.Fragment>
         <div className="main-container">
-          <img className="logo-image" src={logoImage} alt="tagslogo"/>
+          <a href="/"><img className="logo-image" src={logoImage} alt="tagslogo"/></a>
           <NavBar />
           <div className="body-content">
             <Switch>
               <Route exact path="/"
+                render={() => {
+                  if (this.state.toAllArtView === true) {
+                    return <Redirect to='/all-art' />
+                  } else {
+                    return(
+                    <div className="background-image">
+                    <h1>Discover a curated collection of street art in Scotland</h1>
+                    <Filter
+                    setLocation={this.setLocation}
+                    setDefaultLocation={this.setDefaultLocation}
+                    setDistance={this.setDistance}
+                    handleSearchSubmit={this.handleSearchSubmit}
+                    />
+                    </div>) }
+                }}
+              />
+              <Route
+                path="/all-art"
                 render={() => <SearchView
                   allArt={this.state.allArt}
                   changeSortMethod={this.changeSortMethod}
