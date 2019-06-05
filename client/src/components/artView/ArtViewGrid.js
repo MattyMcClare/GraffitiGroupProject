@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import ArtBox from '../ArtBox'
 
 const ArtViewGrid = (props) => {
-    console.log(props);
 
     const artBoxes = props.worksByArtist.map(art => {
         return (
