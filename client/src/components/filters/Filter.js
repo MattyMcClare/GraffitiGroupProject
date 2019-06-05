@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AdvancedFilter from './AdvancedFilter';
 import LocationFilter from './LocationFilter';
+import './Filter.css'
 
 import mapKey from '../../keys.js';
 
@@ -27,8 +28,7 @@ class Filter extends Component {
     }
 
     //Call API for search items
-    // this.props.callSearch();
-
+    this.props.handleSearchSubmit();
   }
 
   fetchMapCoordinates(stringLocation) {
@@ -72,17 +72,18 @@ class Filter extends Component {
   render() {
     return (
       <form className="filter-form"
-        onSubmit={this.handleSubmit}>
-
-        <LocationFilter
-          onStringLocation={this.onStringLocation}
-          stringLocation={this.state.stringLocation}
-          onDistanceSelectChange={this.onDistanceSelectChange}
-          distance={this.state.distance}
-        />
+        onSubmit={this.handleSubmit}
+      >
+        <div className="main-filter">
+          <LocationFilter
+            onStringLocation={this.onStringLocation}
+            stringLocation={this.state.stringLocation}
+            onDistanceSelectChange={this.onDistanceSelectChange}
+            distance={this.state.distance}
+          />
+          <input className="submit" type="submit" value="Search" />
+        </div>
         <AdvancedFilter />
-
-        <input type="submit" name="Search" />
       </form>
     )
   }
