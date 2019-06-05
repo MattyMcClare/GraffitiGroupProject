@@ -126,7 +126,7 @@ class Main extends Component {
     return (
       <Router>
         <React.Fragment>
-          <Switch location={false ? this.previousLocation : location}>
+          <Switch location={true ? this.previousLocation : location}>
             <Route exact path="/gallery"
               render={() => <AllArtView
                 allArt={this.state.allArt}
@@ -150,7 +150,7 @@ class Main extends Component {
             />
             <Route component={ErrorPage} />
           </Switch>
-          {true ? <Route path="/art/:id" component={ModalView} /> : null}
+          {false ? <Route path="/art/:id" component={ModalView} /> : null}
         </React.Fragment>
       </Router>
     );

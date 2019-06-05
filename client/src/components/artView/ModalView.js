@@ -2,9 +2,9 @@ import React from "react";
 
 
 const ModalView = (props) => {
-    let image = props.allArtView[parseInt(props.match.params.id, 10)];
+    // let image = props.allArtView[parseInt(props.match.params.id, 10)];
 
-    if (!image) return null;
+    // if (!image) return null;
 
     let back = e => {
         e.stopPropagation();
