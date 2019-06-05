@@ -4,16 +4,16 @@ const ArtBox = (props) => {
     const handleSelectArt = (evt) => {
         // evt.preventDefault();
         evt.persist();
-        const selectedId = evt.target.id;
+        const selectedId = props.art.art.id;
         props.onSelectArt(selectedId)
-        console.log("handle click", props);
+        console.log("props", props);
     }
 
     return (
         <div onClick={handleSelectArt} className="art-box">
-            <img src={require(props.img)} alt="default" height="200" width="200"></img>
-            <p>{props.location}</p>
-            <p>{props.date}</p>
+            <img src={props.art.img} alt="default" height="200" width="200"></img>
+            <p>{props.art.location}</p>
+            <p>{props.art.date}</p>
         </div>
     )
 }

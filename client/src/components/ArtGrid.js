@@ -9,18 +9,18 @@ const ArtGrid = (props) => {
         return (
             <Link
                 key={art.id}
-
                 to={{
                     pathname: `/art/${art.id}`
                 }}
 
             >
                 <ArtBox
+                    art={art}
                     key={art.id}
-                    img={art.img}
-                    style={art.style}
-                    signature={art.signature}
-                    location={art.location}
+                    // img={art.img}
+                    // style={art.style}
+                    // signature={art.signature}
+                    // location={art.location}
                     onSelectArt={props.onSelectArt}
                 >
                 </ArtBox>

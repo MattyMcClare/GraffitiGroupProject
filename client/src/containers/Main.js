@@ -20,7 +20,8 @@ class Main extends Component {
       },
       distance: 0,
       allArt: [],
-      selectedArtView: {}
+      selectedArtView: null
+
     }
     this.changeSortMethod = this.changeSortMethod.bind(this);
     this.setDefaultLocation = this.setDefaultLocation.bind(this);
@@ -28,6 +29,7 @@ class Main extends Component {
     this.setDistance = this.setDistance.bind(this);
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
     this.selectArt = this.selectArt.bind(this);
+
   }
 
   // previousLocation = this.props.location;
@@ -124,9 +126,10 @@ class Main extends Component {
                 }
               />
               <Route
-                path="/art/:id"
+                path="/art"
                 render={() => <ArtView
                   selectedArtView={this.state.selectedArtView}
+                  selectArt={this.selectArt}
                 />}
               />
               <Route path="/about"

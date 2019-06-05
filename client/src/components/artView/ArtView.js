@@ -1,7 +1,12 @@
 import React from "react";
 // import ArtViewGrid from './ArtViewGrid'
+
 const ArtView = (props) => {
     console.log(props);
+    if (props.selectedArtView === null) {
+        props.selectArt();
+        return null;
+    }
 
     return (
         <div className="art-view">
