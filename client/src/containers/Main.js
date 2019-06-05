@@ -58,7 +58,6 @@ class Main extends Component {
       const jsonString = request.responseText;
       const data = JSON.parse(jsonString);
       this.setState({ allArt: data })
-      console.log(this.state.allArt)
     });
 
     request.send();
