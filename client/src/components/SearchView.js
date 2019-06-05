@@ -2,7 +2,6 @@ import React from 'react';
 import ArtGrid from './ArtGrid';
 import Filter from './filters/Filter';
 import Sort from './sorts/Sort';
-import './AllArtView.css'
 
 const SearchView = (props) => {
 
@@ -13,11 +12,11 @@ const SearchView = (props) => {
     return (
         <div>
             <Filter
-              displayLocationNotFound = {locationNotFound()}
-              setLocation = {props.setLocation}
-              setDefaultLocation = {props.setDefaultLocation}
-              setDistance = {props.setDistance}
-              handleSearchSubmit = {props.handleSearchSubmit}
+                displayLocationNotFound={locationNotFound()}
+                setLocation={props.setLocation}
+                setDefaultLocation={props.setDefaultLocation}
+                setDistance={props.setDistance}
+                handleSearchSubmit={props.handleSearchSubmit}
             />
             <Sort
                 changeSortMethod={props.changeSortMethod}

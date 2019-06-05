@@ -1,32 +1,36 @@
 import React from 'react';
-import ArtBox from './ArtBox';
 import { Link } from 'react-router-dom';
+import ArtBox from '../ArtBox'
 
+const ArtViewGrid = (props) => {
 
-const ArtGrid = (props) => {
-    const artBoxes = props.allArt.map(art => {
+    const artBoxes = props.worksByArtist.map(art => {
         return (
             <Link
                 key={art.id}
                 to={{
                     pathname: `/art/${art.id}`
+
                 }}
             >
-                <ArtBox
+                {/* <ArtBox
                     key={art.id}
                     img={art.img}
                     handle={art.handle}
                     signature={art.signature}
                     location={art.location}
                 >
-                </ArtBox>
+                </ArtBox> */}
             </Link>
         )
     });
+
     return (
-        <div className="art-grid">
+        <div className='art-view-grid'>
+
             {artBoxes}
         </div>
     )
-}
-export default ArtGrid;
+};
+
+export default ArtViewGrid;
