@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ArtBox from '../ArtBox'
+import ArtBox from '../ArtBox';
 
 const ArtViewGrid = (props) => {
 
@@ -13,21 +13,21 @@ const ArtViewGrid = (props) => {
 
                 }}
             >
-                {/* <ArtBox
+                <ArtBox
                     key={art.id}
-                    img={art.img}
-                    handle={art.handle}
-                    signature={art.signature}
-                    location={art.location}
+                    art={art}
+                // img={art.img}
+                // handle={art.handle}
+                // signature={art.signature}
+                // location={art.location}
                 >
-                </ArtBox> */}
+                </ArtBox>
             </Link>
         )
     });
 
     return (
         <div className='art-view-grid'>
-
             {artBoxes}
         </div>
     )

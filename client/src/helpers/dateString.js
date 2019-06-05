@@ -1,5 +1,10 @@
-function dateString (){
+import React from 'react';
+import TimeAgo from 'react-timeago';
 
+const dateString = (date) => {
+    return (
+        <TimeAgo date={date} />
+    )
 }
 
-module.exports = dateString;
+export default dateString;
