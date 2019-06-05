@@ -29,9 +29,9 @@ public class LocationController {
         return locations.stream().sorted(Comparator.comparing(Location::getDistanceTo)).collect(Collectors.toList());
     }
 
-    @GetMapping(value = "sortbydate/lat={latitude}/long={longitude}/dis={distance}")
-    public List<Location> getAllArtWithinDistanceSortDate (@PathVariable("latitude") double latitude, @PathVariable("longitude") double longitude,@PathVariable("distance") int distance) {
-        List<Location> unsortedResult = locationRepository.getAllArtWithinDistance(latitude, longitude, distance);
+    @GetMapping(value = "sortbydate/lat={latitude}/long={longitude}/dis={distance}/style={style}")
+    public List<Location> getAllArtWithinDistanceSortDate (@PathVariable("latitude") double latitude, @PathVariable("longitude") double longitude,@PathVariable("distance") int distance, @PathVariable("style") String style) {
+        List<Location> unsortedResult = locationRepository.getAllArtByStyleWithinDistance(latitude, longitude, distance, style);
         List<Location> sortedResult = unsortedResult.stream().sorted(Comparator.comparing(Location::getDateForLocation).reversed()).collect(Collectors.toList());
         return sortedResult;
     }
