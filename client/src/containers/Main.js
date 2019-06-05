@@ -8,6 +8,8 @@ import About from "./About.js"
 import logoImage from '../img/logo.png'
 import './Main.css';
 
+
+
 class Main extends Component {
 
   constructor(props) {
@@ -96,6 +98,7 @@ class Main extends Component {
 
 
 
+
   render() {
 
 
@@ -141,6 +144,7 @@ class Main extends Component {
           </React.Fragment>
         </div>
       </Router>
+
     );
   }
 }

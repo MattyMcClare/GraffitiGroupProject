@@ -6,11 +6,13 @@ import { Link } from 'react-router-dom';
 const ArtGrid = (props) => {
 
     const artBoxes = props.allArt.map(art => {
+
+
         return (
             <Link
                 key={art.id}
                 to={{
-                    pathname: `/art/${art.id}`
+                    pathname: `/art/${art.art.id}`
                 }}
 
             >
@@ -22,6 +24,7 @@ const ArtGrid = (props) => {
                     // signature={art.signature}
                     // location={art.location}
                     onSelectArt={props.onSelectArt}
+
                 >
                 </ArtBox>
             </Link>

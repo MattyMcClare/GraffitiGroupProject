@@ -1,20 +1,23 @@
 import React from "react";
-// import ArtViewGrid from './ArtViewGrid'
+import ArtViewGrid from './ArtViewGrid'
+
 
 const ArtView = (props) => {
-    console.log(props);
+    // console.log(this.props.location.pathname);
     if (props.selectedArtView === null) {
-        props.selectArt();
         return null;
     }
+    console.log(props.selectedArtView);
+
 
     return (
         <div className="art-view">
             <h3>ArtView</h3>
-            {/* <img src={props.selectedArtView.img} alt="default" height="400" width="600"></img> */}
-            <h4>{props.selectedArtView.style}</h4>
-            <p>{props.selectedArtView.description}</p>
-            {/* <ArtViewGrid worksByArtist={props.selectedArtView.worksByArtist} /> */}
+            <img src={props.selectedArtView.imageUrl} alt="default" height="400" width="600"></img>
+            <p>Style: {props.selectedArtView.style}</p>
+            <p>Description: {props.selectedArtView.description}</p>
+            <p>Posted: {props.selectedArtView.dateUploaded}</p>
+            <ArtViewGrid worksByArtist={props.selectedArtView._embedded.artist.art} />
         </div>
     );
 

@@ -6,7 +6,7 @@ const ArtBox = (props) => {
         evt.persist();
         const selectedId = props.art.art.id;
         props.onSelectArt(selectedId)
-        console.log("props", props);
+        // console.log("handleselectedId", props);
     }
 
     return (
