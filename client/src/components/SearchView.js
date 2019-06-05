@@ -1,31 +1,28 @@
-import React from 'react';
-import ArtGrid from './ArtGrid';
-import Filter from './filters/Filter';
-import Sort from './sorts/Sort';
+import React from "react";
+import ArtGrid from "./ArtGrid";
+import Filter from "./filters/Filter";
+import Sort from "./sorts/Sort";
 
-const SearchView = (props) => {
+const SearchView = props => {
+  const locationNotFound = () => {};
 
-    const locationNotFound = () => {
-
-    }
-
-    return (
-        <div>
-            <Filter
-                displayLocationNotFound={locationNotFound()}
-                setLocation={props.setLocation}
-                setDefaultLocation={props.setDefaultLocation}
-                setDistance={props.setDistance}
-                handleSearchSubmit={props.handleSearchSubmit}
-            />
-            <Sort
-                changeSortMethod={props.changeSortMethod}
-                sortMethod={props.sortMethod}
-            />
-            <ArtGrid allArt={props.allArt} />
-        </div>
-    )
-
-}
+  return (
+    <div>
+      <Filter
+        displayLocationNotFound={locationNotFound()}
+        setLocation={props.setLocation}
+        setDefaultLocation={props.setDefaultLocation}
+        setDistance={props.setDistance}
+        handleSearchSubmit={props.handleSearchSubmit}
+        setStyle={props.setStyle}
+      />
+      <Sort
+        changeSortMethod={props.changeSortMethod}
+        sortMethod={props.sortMethod}
+      />
+      <ArtGrid allArt={props.allArt} />
+    </div>
+  );
+};
 
 export default SearchView;
