@@ -3,7 +3,7 @@ import SearchView from "../components/SearchView";
 import ErrorView from "../components/ErrorView";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ArtView from '../components/artView/ArtView';
-import NavBar from "./NavBar.js"
+// import NavBar from "./NavBar.js";
 import About from "./About.js"
 import logoImage from '../img/logo.png'
 import './Main.css';
@@ -27,6 +27,7 @@ class Main extends Component {
     this.setLocation = this.setLocation.bind(this);
     this.setDistance = this.setDistance.bind(this);
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
+    this.selectArt = this.selectArt.bind(this);
   }
 
   // previousLocation = this.props.location;
@@ -81,9 +82,21 @@ class Main extends Component {
     this.setState({ distance: inputDistance })
   }
 
+  selectArt(selectedId) {
+    console.log("selectedId: ", selectedId);
+
+    const url = `http://localhost:8080/arts/${selectedId}`;
+    fetch(url)
+      .then(res => res.json())
+      .then((selectedArtView) => (this.setState({ selectedArtView })))
+
+  }
+
 
 
   render() {
+
+
     // let { location } = this.state;
 
     // let isModal = !!(
@@ -106,6 +119,7 @@ class Main extends Component {
                   setDefaultLocation={this.setDefaultLocation}
                   setDistance={this.setDistance}
                   handleSearchSubmit={this.handleSearchSubmit}
+                  onSelectArt={this.selectArt}
                 />
                 }
               />

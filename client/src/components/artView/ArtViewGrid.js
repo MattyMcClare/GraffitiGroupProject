@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ArtBox from '../ArtBox'
+// import ArtBox from '../ArtBox'
 
 const ArtViewGrid = (props) => {
 
