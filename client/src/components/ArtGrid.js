@@ -14,10 +14,10 @@ const ArtGrid = (props) => {
             >
                 <ArtBox
                     key={art.id}
-                    img={art.img}
-                    handle={art.handle}
-                    signature={art.signature}
-                    location={art.location}
+                    img={art.art.imageUrl}
+                    description={art.art.description}
+                    location={art.stringLocation}
+                    date={art.art.dateUploaded}
                 >
                 </ArtBox>
             </Link>

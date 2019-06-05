@@ -53,15 +53,18 @@ class Main extends Component {
       const jsonString = request.responseText;
       const data = JSON.parse(jsonString);
       this.setState({ allArt: data })
+      console.log(this.state.allArt)
     });
 
     request.send();
   }
 
   changeSortMethod() {
-    const changedState = !this.state.sortMethod;
-    this.setState({ sortMethod: changedState });
-    this.handleSearchSubmit();
+
+    const sortMethod = this.state.sortMethod;
+    this.setState({ sortMethod: !sortMethod }, () => {
+      this.handleSearchSubmit()
+    })
   }
 
   setLocation(latLong) {
