@@ -11,4 +11,5 @@ public interface LocationRepositoryCustom {
 
     List<Location> getAllArtOfACertainStyle(String style, List<Location> locationsInArea);
 
+    List<Location> getAllArtByStyleWithinDistance(double latitude, double longitude, int distance, String style);
 }

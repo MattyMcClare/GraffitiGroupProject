@@ -18,7 +18,7 @@ public class FindingByStyle {
      public static List<Location> findByStyle(String style, List<Location> locationsInArea) {
         List<Location> results = new ArrayList<>();
         for (Location location: locationsInArea) {
-            if (location.getStyleForArtAtLocation() == style){
+            if (location.getStyleForArtAtLocation().equals(style)){
                 results.add(location);
             }
         }

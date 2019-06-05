@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 public class LocationRepositoryImpl implements LocationRepositoryCustom{
@@ -50,4 +51,17 @@ public class LocationRepositoryImpl implements LocationRepositoryCustom{
         return result;
     }
 
+    public List<Location> getAllArtByStyleWithinDistance(double latitude, double longitude, int distance, String style) {
+        List<Location> artWithinDistance = getAllArtWithinDistance(latitude, longitude, distance);
+        ArrayList<Location> results = new ArrayList<>();
+        for (Location location : artWithinDistance) {
+            if (location.getStyleForArtAtLocation().equals(style)) {
+                results.add(location);
+            }
+        }
+        if (results.isEmpty())
+            return artWithinDistance;
+        else
+            return results;
+    }
 }
