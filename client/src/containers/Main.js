@@ -3,6 +3,8 @@ import SearchView from "../components/SearchView";
 import ErrorView from "../components/ErrorView";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ArtView from '../components/artView/ArtView';
+import NavBar from "./NavBar.js"
+import About from "./About.js"
 import logoImage from '../img/logo.png'
 import './Main.css';
 
@@ -112,6 +114,9 @@ class Main extends Component {
                 render={() => <ArtView
                   selectedArtView={this.state.selectedArtView}
                 />}
+              />
+              <Route path="/about"
+                component={About}
               />
               <Route component={ErrorView} />
             </Switch>
