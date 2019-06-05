@@ -1,6 +1,7 @@
 package com.codeclan.tagsproject.TagsProject.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
@@ -13,19 +14,22 @@ public class Image {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JsonIgnoreProperties("images")
+    @JsonIgnoreProperties("image")
     @ManyToOne
     @JoinColumn(name="art_id")
-    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private Art art;
 
     @Column(name = "url")
     private String url;
 
     public Image(Art art, String url) {
-        this.id = id;
         this.art = art;
         this.url = url;
+    }
+
+    public Image(Long id, Art art, String url) {
+        this(art, url);
+        this.id = id;
     }
 
     public Image() {

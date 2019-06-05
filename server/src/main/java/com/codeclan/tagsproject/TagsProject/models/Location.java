@@ -3,6 +3,7 @@ package com.codeclan.tagsproject.TagsProject.models;
 import com.codeclan.tagsproject.TagsProject.Enums.StyleType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.time.LocalDate;

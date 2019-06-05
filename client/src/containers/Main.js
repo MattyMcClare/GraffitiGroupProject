@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import SearchView from "../components/SearchView";
 import ErrorView from "../components/ErrorView";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import ArtView from '../components/artView/ArtView';
 import NavBar from "./NavBar.js"
 import About from "./About.js"
 import logoImage from '../img/logo.png'
@@ -17,8 +18,9 @@ class Main extends Component {
         lat: 0,
         long: 0
       },
-      distance: 0,
+      distance: 500,
       allArt: [],
+      selectedArtView: {}
     }
     this.changeSortMethod = this.changeSortMethod.bind(this);
     this.setDefaultLocation = this.setDefaultLocation.bind(this);
@@ -27,9 +29,22 @@ class Main extends Component {
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
   }
 
+  // previousLocation = this.props.location;
+
+  // componentWillUpdate(nextProps) {
+  //   let { location } = this.state;
+
+  //   // set previousLocation if props.location is not modal
+  //   if (
+  //     nextProps.history.action !== "POP" &&
+  //     (!location.state || !location.state.modal)
+  //   ) {
+  //     this.previousLocation = this.props.location;
+  //   }
+
   handleSearchSubmit() {
     const sortBy = this.state.sortMethod ? 'sortbydate' : 'sortbydistance'
-    const url = `http://localhost:8080/locations/${sortBy}/lat=${this.state.location.lat}/long=${this.state.location.long}/dis=${this.state.distance}`;
+    const url = `http://localhost:8080/locations/${sortBy}/lat=${this.state.location.lat}/long=${this.state.location.long}/dis=${this.state.distance}/`;
     const request = new XMLHttpRequest();
     request.open('GET', url);
 
@@ -37,23 +52,26 @@ class Main extends Component {
       if (request.status !== 200) return;
       const jsonString = request.responseText;
       const data = JSON.parse(jsonString);
-      this.setState({allArt: data})
+      this.setState({ allArt: data })
+      console.log(this.state.allArt)
     });
 
     request.send();
   }
 
   changeSortMethod() {
-    const changedState = !this.state.sortMethod;
-    this.setState({sortMethod: changedState});
-    this.handleSearchSubmit();
+
+    const sortMethod = this.state.sortMethod;
+    this.setState({ sortMethod: !sortMethod }, () => {
+      this.handleSearchSubmit()
+    })
   }
 
-  setLocation(latLong){
-    this.setState({location: latLong});
+  setLocation(latLong) {
+    this.setState({ location: latLong });
   }
 
-  setDefaultLocation(){
+  setDefaultLocation() {
     this.setState({
       location: {
         lat: 0,
@@ -62,41 +80,57 @@ class Main extends Component {
     });
   }
 
-  setDistance(inputDistance){
-    this.setState({distance: inputDistance})
+  setDistance(inputDistance) {
+    this.setState({ distance: inputDistance })
   }
 
+
+
   render() {
+    // let { location } = this.state;
+
+    // let isModal = !!(
+    //   location.state &&
+    //   location.state.modal &&
+    //   this.previousLocation !== location
+    // ); // not initial render
     return (
       <Router>
-        <Switch>
-          <div className="main-container">
-            <img className="logo-image" src={logoImage} alt="tagslogo"/>
-            <NavBar />
-            <div className="body-content">
-            <Route exact path="/"
-              // component={AllArtView}
-              render={() => <SearchView
-                allArt={this.state.allArt}
-                changeSortMethod = {this.changeSortMethod}
-                sortMethod = {this.state.sortMethod}
-                setLocation = {this.setLocation}
-                setDefaultLocation = {this.setDefaultLocation}
-                setDistance = {this.setDistance}
-                handleSearchSubmit = {this.handleSearchSubmit}
+      <React.Fragment>
+        <div className="main-container">
+          <img className="logo-image" src={logoImage} alt="tagslogo"/>
+          <NavBar />
+          <div className="body-content">
+            <Switch>
+              <Route exact path="/"
+                render={() => <SearchView
+                  allArt={this.state.allArt}
+                  changeSortMethod={this.changeSortMethod}
+                  sortMethod={this.state.sortMethod}
+                  setLocation={this.setLocation}
+                  setDefaultLocation={this.setDefaultLocation}
+                  setDistance={this.setDistance}
+                  handleSearchSubmit={this.handleSearchSubmit}
                 />
                 }
               />
+              <Route
+                path="/art/:id"
+                render={() => <ArtView
+                  selectedArtView={this.state.selectedArtView}
+                />}
+              />
               <Route path="/about"
-                component = {About}
+                component={About}
               />
               <Route component={ErrorView} />
-            </div>
-          </div>
-        </Switch>
+            </Switch>
+            {/* {false ? <Route path="/art/:id" component={ModalView} /> : null} */}
+        </div>
+      </div>
+    </React.Fragment>
       </Router>
     );
   }
 }
-
 export default Main;

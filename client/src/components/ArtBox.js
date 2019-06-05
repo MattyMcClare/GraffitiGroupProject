@@ -1,12 +1,15 @@
 import React from 'react';
 
 const ArtBox = (props) => {
+
+  const source = "./seedimages/" + props.img.slice(14)
+
   return (
-    <div className="art-box">
-      <img src={props.img} alt="default" height="200" width="200"></img>
-      <p>{props.location}</p>
-      <p>{props.date}</p>
-    </div>
+      <div className="art-box">
+          <img src={source} alt={props.description}></img>
+          <p>{props.location}</p>
+          <p>{props.date}</p>
+      </div>
   )
 }
 

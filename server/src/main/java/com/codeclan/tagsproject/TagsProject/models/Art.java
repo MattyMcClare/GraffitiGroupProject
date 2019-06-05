@@ -4,6 +4,7 @@ import com.codeclan.tagsproject.TagsProject.Enums.StyleType;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -23,7 +24,7 @@ public class Art {
     private List<Image> images;
 
     @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name="artist", nullable = false)
     Artist artist;
 
@@ -33,7 +34,7 @@ public class Art {
     @Column(name = "description")
     private String description;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "location_id", referencedColumnName = "id")
     private Location location;
 
@@ -120,5 +121,8 @@ public class Art {
         return returnedUrl;
     }
 
+    public void addImageToList(Image image){
+        this.images.add(image);
+    }
 
 }
