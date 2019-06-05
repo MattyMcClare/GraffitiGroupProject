@@ -1,0 +1,5 @@
+.search-box{
+  background: url('./images/magnify.png') no-repeat scroll 0.5rem;
+  background-size: 2rem;
+  padding-left: 3.5rem;
+}

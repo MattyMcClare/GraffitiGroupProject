@@ -1,0 +1,35 @@
+.main-container {
+  display: grid;
+  grid-template-columns: 1fr minmax(640px, 1080px) 1fr;
+}
+
+.logo-image{
+  grid-column: 1/span 1;
+  height: 8rem;
+  margin: 1.5rem;
+}
+
+.body-content{
+  grid-column: 2/span 1;
+}
+
+.nav-bar{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  display: inline-flex;
+  justify-content: flex-end;
+  margin-right: -1.5em;
+}
+
+.nav-bar li{
+  padding: 1.5em;
+  text-decoration: none;
+  color: inherit;
+}
+
+.link{
+  text-decoration: none;
+  color: inherit;
+}

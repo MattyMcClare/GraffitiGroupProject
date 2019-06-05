@@ -1,0 +1,10 @@
+.image-button {
+  padding: 0;
+  height: 3rem;
+  width: 3rem;
+}
+
+.image-button img{
+  height: 80%;
+  width: auto;
+}

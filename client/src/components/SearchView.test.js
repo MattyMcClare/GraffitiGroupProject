@@ -1,8 +1,8 @@
 import React from 'react';
-import AllArtView from './AllArtView'
+import AllArtView from './SearchView'
 import { shallow } from 'enzyme';
 
-describe('AllArtView', () => {
+describe('SearchView', () => {
     let wrapper;
 
 
