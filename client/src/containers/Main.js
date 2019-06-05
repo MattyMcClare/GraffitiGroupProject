@@ -18,7 +18,7 @@ class Main extends Component {
         lat: 0,
         long: 0
       },
-      distance: 0,
+      distance: 500,
       allArt: [],
       selectedArtView: {}
     }
@@ -44,7 +44,7 @@ class Main extends Component {
 
   handleSearchSubmit() {
     const sortBy = this.state.sortMethod ? 'sortbydate' : 'sortbydistance'
-    const url = `http://localhost:8080/locations/${sortBy}/lat=${this.state.location.lat}/long=${this.state.location.long}/dis=${this.state.distance}`;
+    const url = `http://localhost:8080/locations/${sortBy}/lat=${this.state.location.lat}/long=${this.state.location.long}/dis=${this.state.distance}/`;
     const request = new XMLHttpRequest();
     request.open('GET', url);
 
@@ -53,15 +53,18 @@ class Main extends Component {
       const jsonString = request.responseText;
       const data = JSON.parse(jsonString);
       this.setState({ allArt: data })
+      console.log(this.state.allArt)
     });
 
     request.send();
   }
 
   changeSortMethod() {
-    const changedState = !this.state.sortMethod;
-    this.setState({ sortMethod: changedState });
-    this.handleSearchSubmit();
+
+    const sortMethod = this.state.sortMethod;
+    this.setState({ sortMethod: !sortMethod }, () => {
+      this.handleSearchSubmit()
+    })
   }
 
   setLocation(latLong) {
@@ -93,9 +96,11 @@ class Main extends Component {
     // ); // not initial render
     return (
       <Router>
+      <React.Fragment>
         <div className="main-container">
-          <React.Fragment>
-            <img className="logo-image" src={logoImage} alt="tagslogo" />
+          <img className="logo-image" src={logoImage} alt="tagslogo"/>
+          <NavBar />
+          <div className="body-content">
             <Switch>
               <Route exact path="/"
                 render={() => <SearchView
@@ -121,8 +126,9 @@ class Main extends Component {
               <Route component={ErrorView} />
             </Switch>
             {/* {false ? <Route path="/art/:id" component={ModalView} /> : null} */}
-          </React.Fragment>
         </div>
+      </div>
+    </React.Fragment>
       </Router>
     );
   }
