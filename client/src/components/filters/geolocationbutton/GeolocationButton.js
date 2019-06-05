@@ -1,5 +1,6 @@
 import React from 'react';
 import geologo from './geolocationicon.png';
+import './GeolocationButton.css'
 
 const GeolocationButton = (props) => {
   return (

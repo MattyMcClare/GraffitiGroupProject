@@ -8,26 +8,26 @@ const ArtViewGrid = (props) => {
         return (
             <Link
                 key={art.id}
-                onClick={props.onOpenModal}
                 to={{
                     pathname: `/art/${art.id}`
 
                 }}
             >
-                <ArtBox
+                {/* <ArtBox
                     key={art.id}
                     img={art.img}
                     handle={art.handle}
                     signature={art.signature}
                     location={art.location}
                 >
-                </ArtBox>
+                </ArtBox> */}
             </Link>
         )
     });
 
     return (
         <div className='art-view-grid'>
+
             {artBoxes}
         </div>
     )

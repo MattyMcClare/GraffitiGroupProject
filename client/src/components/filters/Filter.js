@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AdvancedFilter from './AdvancedFilter';
 import LocationFilter from './LocationFilter';
+import './Filter.css'
 
 import mapKey from '../../keys.js';
 
@@ -10,10 +11,6 @@ class Filter extends Component {
     super(props);
     this.state = {
       stringLocation: '',
-      location: {
-        lat: 0,
-        long: 0
-      },
       distance: 0
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,14 +24,11 @@ class Filter extends Component {
     if (this.state.stringLocation !== '') {
       this.fetchMapCoordinates(this.state.stringLocation)
     } else {
-      this.setState({
-        location: {
-          lat: 0,
-          long: 0
-        }
-      });
+      this.props.setDefaultLocation();
     }
 
+    //Call API for search items
+    this.props.handleSearchSubmit();
   }
 
   fetchMapCoordinates(stringLocation) {
@@ -49,13 +43,12 @@ class Filter extends Component {
         const mapData = JSON.parse(jsonData);
         const filterData = this.scottishLocationFilter(mapData);
         if (filterData !== undefined) {
-          this.setState({
-            location: {
+          this.props.setLocation({
               lat: filterData.latLng.lat,
               long: filterData.latLng.lng
-            }
-          });
+            });
         } else {
+          this.props.setDefaultLocation();
           this.props.locationNotFound();
         }
       }
@@ -73,23 +66,24 @@ class Filter extends Component {
   }
 
   onDistanceSelectChange = (inputDistance) => {
-    this.setState({ distance: inputDistance })
+    this.props.setDistance(inputDistance);
   }
 
   render() {
     return (
       <form className="filter-form"
-        onSubmit={this.handleSubmit}>
-
-        <LocationFilter
-          onStringLocation={this.onStringLocation}
-          stringLocation={this.state.stringLocation}
-          onDistanceSelectChange={this.onDistanceSelectChange}
-          distance={this.state.distance}
-        />
+        onSubmit={this.handleSubmit}
+      >
+        <div className="main-filter">
+          <LocationFilter
+            onStringLocation={this.onStringLocation}
+            stringLocation={this.state.stringLocation}
+            onDistanceSelectChange={this.onDistanceSelectChange}
+            distance={this.state.distance}
+          />
+          <input className="submit" type="submit" value="Search" />
+        </div>
         <AdvancedFilter />
-
-        <input type="submit" name="Search" />
       </form>
     )
   }

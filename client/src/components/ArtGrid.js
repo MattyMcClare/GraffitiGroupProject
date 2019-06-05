@@ -8,10 +8,8 @@ const ArtGrid = (props) => {
         return (
             <Link
                 key={art.id}
-                onClick={props.onOpenModal}
                 to={{
                     pathname: `/art/${art.id}`
-
                 }}
             >
                 <ArtBox
