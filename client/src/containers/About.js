@@ -16,8 +16,8 @@ const About = (props) => {
       <h1>About Tags</h1>
       <p>Tags is a project to recognize and promote Scottish Street art. From the Glasgow street art trail, to the murals of small Fife mining towns, to abandoned train tunnels in Edinburgh, Scotland has shortage of incredible art to be enjoyed and shared with the world. We've currated the very best works, and allow you to search by location with specific instructions on how to find them, because street art shouldn't only be experienced through a screen.</p><p>It was designed and built in a one week sprint by Codeclan Students David Boyle, Eric Cross, Rob Marshall, Mateusz Stanczak, and Jon Zarecki using Javascript and Java with the React and Spring frameworks.</p>
       <div className="art-styles">
-      <h1>Street Art Styles</h1>
-      <p>Art styles provided by the<a className = "link" href="https://graffitocanberra.wordpress.com/styles-of-graffiti/">Graffiti to Canberra</a>street art blog.</p>
+      <h1><br/>Street Art Styles</h1>
+      <p>Scottish street art styles were blatantly copied from the<a className = "link" href="https://graffitocanberra.wordpress.com/styles-of-graffiti/">Graffiti to Canberra</a>street art blog.</p>
       <h2 id="tag" >Tag</h2>
       <img src = {styleTag} alt="tag street art style"/>
       <p>Tagging is the easiest and simplest style of graffiti; it includes one colour and the artist’s name or identifier. It is considered disrespectful to write a tag over another’s artists’s tag or work.</p>
