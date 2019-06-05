@@ -23,11 +23,12 @@ input, button, select {
   background-color: white;
   height: 3rem;
   border: 3px solid black;
+  background-color: white;
 }
 
 select{
   -webkit-appearance: none;
-  -webkit-border-radius: 0px
+  -webkit-border-radius: 0px;
 }
 
 button:hover, select:hover, .submit:hover, .link:hover{
@@ -38,6 +39,7 @@ button:hover, select:hover, .submit:hover, .link:hover{
   margin: 0.5em;
   border-bottom: 3px solid yellow;
   font-weight: 700;
+  background-color: white;
 }
 
 .link:hover{

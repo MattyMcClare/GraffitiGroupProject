@@ -4,29 +4,33 @@ import { Link } from 'react-router-dom';
 
 
 const ArtGrid = (props) => {
-    const artBoxes = props.allArt.map(art => {
-        return (
-            <Link
-                key={art.id}
-                to={{
-                    pathname: `/art/${art.id}`
-                }}
-            >
-                <ArtBox
-                    key={art.id}
-                    img={art.art.imageUrl}
-                    description={art.art.description}
-                    location={art.stringLocation}
-                    date={art.art.dateUploaded}
-                >
-                </ArtBox>
-            </Link>
-        )
-    });
-    return (
-        <div className="art-grid">
-            {artBoxes}
-        </div>
-    )
+
+
+  const artBoxes = props.allArt.map(art => {
+
+    return(<Link
+      key={art.id}
+      to={{
+        pathname: `/art/${art.id}`
+      }}
+      >
+      <ArtBox
+        key={art.id}
+        idNumber = {art.id}
+        img={art.art.imageUrl}
+        description={art.art.description}
+        location={art.stringLocation}
+        date={art.art.dateUploaded}
+      >
+      </ArtBox>
+    </Link>);
+
+  });
+
+  return (
+      <div className="art-grid">
+          {artBoxes}
+      </div>
+  )
 }
 export default ArtGrid;
