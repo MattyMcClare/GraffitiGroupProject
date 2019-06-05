@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom';
 
 const ArtBox = (props) => {
     return (
+      console.log(props),
+    
         <div className="art-box">
-            <Link to="/art">More</Link>
+            <Link to={"/art" + props.id}>More</Link>
             <div className="art-box-image">
                 <img src={props.img} alt="default" height="200" width="200"></img>
             </div>

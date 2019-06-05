@@ -11,7 +11,6 @@ class Main extends Component {
     super(props);
 
     this.state = {
-      location: null,
       open: true,
       sortMethod: true,
       allArt: [
@@ -101,32 +100,12 @@ class Main extends Component {
     this.setState({ open: false });
   };
 
-  previousLocation = this.props.location;
-
-  componentWillUpdate(nextProps) {
-    let { location } = this.state;
-
-    // set previousLocation if props.location is not modal
-    if (
-      nextProps.history.action !== "POP" &&
-      (!location.state || !location.state.modal)
-    ) {
-      this.previousLocation = this.props.location;
-    }
-  }
 
   render() {
-    let { location } = this.state;
-
-    // let isModal = !!(
-    //   location.state &&
-    //   location.state.modal &&
-    //   this.previousLocation !== location
-    // ); // not initial render
     return (
       <Router>
         <React.Fragment>
-          <Switch location={false ? this.previousLocation : location}>
+
             <Route exact path="/gallery"
               render={() => <AllArtView
                 allArt={this.state.allArt}
@@ -135,7 +114,7 @@ class Main extends Component {
                 open={this.state.open}
                 onOpenModal={this.onOpenModal}
                 onCloseModal={this.onCloseModal}
-              // selectedArtView={this.state.selectedArtView}
+              selectedArtView={this.state.selectedArtView}
               />
               }
             />
@@ -149,8 +128,8 @@ class Main extends Component {
               }
             />
             <Route component={ErrorPage} />
-          </Switch>
-          {true ? <Route path="/art/:id" component={ModalView} /> : null}
+
+
         </React.Fragment>
       </Router>
     );
