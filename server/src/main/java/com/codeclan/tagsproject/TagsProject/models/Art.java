@@ -71,8 +71,8 @@ public class Art {
         this.artist = artist;
     }
 
-    public StyleType getStyle() {
-        return style;
+    public String getStyle() {
+        return style.getStyle();
     }
 
     public void setStyle(StyleType style) {

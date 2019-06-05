@@ -1,5 +1,6 @@
 package com.codeclan.tagsproject.TagsProject.Controllers;
 
+import com.codeclan.tagsproject.TagsProject.Enums.StyleType;
 import com.codeclan.tagsproject.TagsProject.Repositories.LocationRepositories.LocationRepository;
 import com.codeclan.tagsproject.TagsProject.models.Art;
 import com.codeclan.tagsproject.TagsProject.models.Location;
@@ -19,9 +20,10 @@ public class LocationController {
     @Autowired
     LocationRepository locationRepository;
 
-    @GetMapping(value = "sortbydistance/lat={latitude}/long={longitude}/dis={distance}")
-    public List<Location> getAllArtWithinDistance (@PathVariable("latitude") double latitude, @PathVariable("longitude") double longitude,@PathVariable("distance") int distance) {
-        List<Location> unsortedResult = locationRepository.getAllArtWithinDistance(latitude, longitude, distance);
+    @GetMapping(value = "sortbydistance/lat={latitude}/long={longitude}/dis={distance}/style={style}")
+    public List<Location> getAllArtWithinDistance (@PathVariable("latitude") double latitude, @PathVariable("longitude") double longitude, @PathVariable("distance") int distance, @PathVariable("style") String style) {
+        List<Location> unsortedResultAllStyles = locationRepository.getAllArtWithinDistance(latitude, longitude, distance);
+        List<Location> unsortedResult = locationRepository.getAllArtOfACertainStyle(style, unsortedResultAllStyles);
         List<Location> sortedResult = unsortedResult.stream().sorted(Comparator.comparing(Location::getDistanceTo)).collect(Collectors.toList());
         return sortedResult;
     }

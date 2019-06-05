@@ -1,7 +1,9 @@
 package com.codeclan.tagsproject.TagsProject.Repositories.LocationRepositories;
 
+import com.codeclan.tagsproject.TagsProject.Enums.StyleType;
 import com.codeclan.tagsproject.TagsProject.models.Art;
 import com.codeclan.tagsproject.TagsProject.models.CalculateDistance;
+import com.codeclan.tagsproject.TagsProject.models.FindingByStyle;
 import com.codeclan.tagsproject.TagsProject.models.Location;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -33,6 +35,19 @@ public class LocationRepositoryImpl implements LocationRepositoryCustom{
            session.close();
        }
        return result;
+    }
+
+    public List<Location> getAllArtOfACertainStyle(String style, List<Location> locationsInArea) {
+        List<Location> result = null;
+        Session session = entityManager.unwrap(Session.class);
+        try {
+            result = FindingByStyle.findByStyle(style, locationsInArea);
+        } catch (HibernateException ex){
+            ex.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return result;
     }
 
 }
