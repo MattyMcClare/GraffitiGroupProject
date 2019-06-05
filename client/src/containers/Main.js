@@ -20,7 +20,7 @@ class Main extends Component {
         lat: 0,
         long: 0
       },
-      distance: 0,
+      distance: 500,
       allArt: [],
       selectedArtView: null
 
@@ -49,7 +49,7 @@ class Main extends Component {
 
   handleSearchSubmit() {
     const sortBy = this.state.sortMethod ? 'sortbydate' : 'sortbydistance'
-    const url = `http://localhost:8080/locations/${sortBy}/lat=${this.state.location.lat}/long=${this.state.location.long}/dis=${this.state.distance}`;
+    const url = `http://localhost:8080/locations/${sortBy}/lat=${this.state.location.lat}/long=${this.state.location.long}/dis=${this.state.distance}/`;
     const request = new XMLHttpRequest();
     request.open('GET', url);
 
@@ -58,15 +58,18 @@ class Main extends Component {
       const jsonString = request.responseText;
       const data = JSON.parse(jsonString);
       this.setState({ allArt: data })
+      console.log(this.state.allArt)
     });
 
     request.send();
   }
 
   changeSortMethod() {
-    const changedState = !this.state.sortMethod;
-    this.setState({ sortMethod: changedState });
-    this.handleSearchSubmit();
+
+    const sortMethod = this.state.sortMethod;
+    this.setState({ sortMethod: !sortMethod }, () => {
+      this.handleSearchSubmit()
+    })
   }
 
   setLocation(latLong) {
@@ -87,7 +90,6 @@ class Main extends Component {
   }
 
   selectArt(selectedId) {
-    console.log("selectedId: ", selectedId);
 
     const url = `http://localhost:8080/arts/${selectedId}`;
     fetch(url)
@@ -101,48 +103,42 @@ class Main extends Component {
 
   render() {
 
-
-    // let { location } = this.state;
-
-    // let isModal = !!(
-    //   location.state &&
-    //   location.state.modal &&
-    //   this.previousLocation !== location
-    // ); // not initial render
     return (
       <Router>
-        <div className="main-container">
-          <React.Fragment>
+        <React.Fragment>
+          <div className="main-container">
             <img className="logo-image" src={logoImage} alt="tagslogo" />
-            <Switch>
-              <Route exact path="/"
-                render={() => <SearchView
-                  allArt={this.state.allArt}
-                  changeSortMethod={this.changeSortMethod}
-                  sortMethod={this.state.sortMethod}
-                  setLocation={this.setLocation}
-                  setDefaultLocation={this.setDefaultLocation}
-                  setDistance={this.setDistance}
-                  handleSearchSubmit={this.handleSearchSubmit}
-                  onSelectArt={this.selectArt}
+            {/* <NavBar /> */}
+            <div className="body-content">
+              <Switch>
+                <Route exact path="/"
+                  render={() => <SearchView
+                    allArt={this.state.allArt}
+                    changeSortMethod={this.changeSortMethod}
+                    sortMethod={this.state.sortMethod}
+                    setLocation={this.setLocation}
+                    setDefaultLocation={this.setDefaultLocation}
+                    setDistance={this.setDistance}
+                    handleSearchSubmit={this.handleSearchSubmit}
+                    onSelectArt={this.selectArt}
+                  />
+                  }
                 />
-                }
-              />
-              <Route
-                path="/art"
-                render={() => <ArtView
-                  selectedArtView={this.state.selectedArtView}
-                  selectArt={this.selectArt}
-                />}
-              />
-              <Route path="/about"
-                component={About}
-              />
-              <Route component={ErrorView} />
-            </Switch>
-            {/* {false ? <Route path="/art/:id" component={ModalView} /> : null} */}
-          </React.Fragment>
-        </div>
+                <Route
+                  path="/art"
+                  render={() => <ArtView
+                    selectedArtView={this.state.selectedArtView}
+                    selectArt={this.selectArt}
+                  />}
+                />
+                <Route path="/about"
+                  component={About}
+                />
+                <Route component={ErrorView} />
+              </Switch>
+            </div>
+          </div>
+        </React.Fragment>
       </Router>
 
     );

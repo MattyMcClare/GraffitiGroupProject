@@ -7,7 +7,6 @@ const ArtGrid = (props) => {
 
     const artBoxes = props.allArt.map(art => {
 
-
         return (
             <Link
                 key={art.id}
@@ -19,12 +18,11 @@ const ArtGrid = (props) => {
                 <ArtBox
                     art={art}
                     key={art.id}
-                    // img={art.img}
-                    // style={art.style}
-                    // signature={art.signature}
-                    // location={art.location}
+                    img={art.art.imageUrl}
+                    description={art.art.description}
+                    location={art.stringLocation}
+                    date={art.art.dateUploaded}
                     onSelectArt={props.onSelectArt}
-
                 >
                 </ArtBox>
             </Link>

@@ -4,18 +4,19 @@ import './sort.css';
 
 const Sort = (props) => {
 
+  const mostRecent = props.sortMethod;
+  const notMostRecent = !props.sortMethod;
+
   return (
       <div className="sort-form">
           <h4 className="sort-text">Sort By:</h4>
           <SortButton
-            buttonState = {props.sortMethod}
-            className = {props.sortMethod ? "selected" : ""}
+            buttonState = {mostRecent}
             buttonText = "Most Recent"
             changeSortMethod = {props.changeSortMethod}
           />
           <SortButton
-            buttonState = {!props.sortMethod}
-            className = {!props.sortMethod ? "selected" : ""}
+            buttonState = {notMostRecent}
             buttonText = "Closest"
             changeSortMethod = {props.changeSortMethod}
           />

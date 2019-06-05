@@ -3,11 +3,9 @@ import ArtViewGrid from './ArtViewGrid'
 
 
 const ArtView = (props) => {
-    // console.log(this.props.location.pathname);
     if (props.selectedArtView === null) {
         return null;
     }
-    console.log(props.selectedArtView);
 
 
     return (

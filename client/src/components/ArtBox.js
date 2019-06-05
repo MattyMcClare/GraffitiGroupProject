@@ -6,14 +6,13 @@ const ArtBox = (props) => {
         evt.persist();
         const selectedId = props.art.art.id;
         props.onSelectArt(selectedId)
-        // console.log("handleselectedId", props);
     }
-
+    // const source = "./seedimages/" + props.img.slice(14)
     return (
         <div onClick={handleSelectArt} className="art-box">
-            <img src={props.art.img} alt="default" height="200" width="200"></img>
-            <p>{props.art.location}</p>
-            <p>{props.art.date}</p>
+            {/* <img src={source} alt={props.description}></img> */}
+            <p>{props.location}</p>
+            <p>{props.date}</p>
         </div>
     )
 }
