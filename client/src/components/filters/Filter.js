@@ -27,7 +27,6 @@ class Filter extends Component {
     } else {
       this.props.setDefaultLocation();
     }
-
     //Call API for search items
     this.props.handleSearchSubmit();
   }

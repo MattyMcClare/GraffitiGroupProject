@@ -3,11 +3,13 @@ import SearchView from "../components/SearchView";
 import ErrorView from "../components/ErrorView";
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import ArtView from '../components/artView/ArtView';
-import NavBar from "./NavBar.js"
+import NavBar from "./NavBar.js";
 import About from "./About.js"
 import Filter from "../components/filters/Filter.js"
 import logoImage from '../img/logo.png'
 import './Main.css';
+
+
 
 class Main extends Component {
 
@@ -22,13 +24,16 @@ class Main extends Component {
       },
       distance: 500,
       allArt: [],
-      selectedArtView: {}
+      selectedArtView: null
+
     }
     this.changeSortMethod = this.changeSortMethod.bind(this);
     this.setDefaultLocation = this.setDefaultLocation.bind(this);
     this.setLocation = this.setLocation.bind(this);
     this.setDistance = this.setDistance.bind(this);
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
+    this.selectArt = this.selectArt.bind(this);
+
   }
 
   // previousLocation = this.props.location;
@@ -59,7 +64,6 @@ class Main extends Component {
       const jsonString = request.responseText;
       const data = JSON.parse(jsonString);
       this.setState({ allArt: data })
-      console.log(this.state.allArt)
     });
 
     request.send();
@@ -90,63 +94,79 @@ class Main extends Component {
     this.setState({ distance: inputDistance })
   }
 
+  selectArt(selectedId) {
+
+    const url = `http://localhost:8080/arts/${selectedId}`;
+    fetch(url)
+      .then(res => res.json())
+      .then((selectedArtView) => (this.setState({ selectedArtView })))
+
+  }
+
+
 
 
   render() {
     return (
       <Router>
-      <React.Fragment>
-        <div className="main-container">
-          <a href="/"><img className="logo-image" src={logoImage} alt="tagslogo"/></a>
-          <NavBar />
-          <div className="body-content">
-            <Switch>
-              <Route exact path="/"
-                render={() => {
-                  if (this.state.toAllArtView === true) {
-                    return <Redirect to='/all-art' />
-                  } else {
-                    return(
-                    <div className="background-image">
-                    <h1>Discover a curated collection of street art in Scotland</h1>
-                    <Filter
+        <React.Fragment>
+          <div className="main-container">
+            <a href="/"><img className="logo-image" src={logoImage} alt="tagslogo" /></a>
+            <NavBar />
+            <div className="body-content">
+              <Switch>
+                <Route exact path="/"
+                  render={() => {
+                    if (this.state.toAllArtView === true) {
+                      return <Redirect to='/all-art' />
+                    } else {
+                      return(
+                      <div className="background-image">
+                      <h1>Discover a curated collection of street art in Scotland</h1>
+                      <Filter
+                        allArt={this.state.allArt}
+                        changeSortMethod={this.changeSortMethod}
+                        sortMethod={this.state.sortMethod}
+                        setLocation={this.setLocation}
+                        setDefaultLocation={this.setDefaultLocation}
+                        setDistance={this.setDistance}
+                        handleSearchSubmit={this.handleSearchSubmit}
+                        onSelectArt={this.selectArt}
+                      />
+                      </div>) }
+                  }}
+                />
+                <Route
+                  path="/all-art"
+                  render={() => <SearchView
+                    allArt={this.state.allArt}
+                    changeSortMethod={this.changeSortMethod}
+                    sortMethod={this.state.sortMethod}
                     setLocation={this.setLocation}
                     setDefaultLocation={this.setDefaultLocation}
                     setDistance={this.setDistance}
                     handleSearchSubmit={this.handleSearchSubmit}
-                    />
-                    </div>) }
-                }}
-              />
-              <Route
-                path="/all-art"
-                render={() => <SearchView
-                  allArt={this.state.allArt}
-                  changeSortMethod={this.changeSortMethod}
-                  sortMethod={this.state.sortMethod}
-                  setLocation={this.setLocation}
-                  setDefaultLocation={this.setDefaultLocation}
-                  setDistance={this.setDistance}
-                  handleSearchSubmit={this.handleSearchSubmit}
+                    onSelectArt={this.selectArt}
+                  />
+                  }
                 />
-                }
-              />
-              <Route
-                path="/art/:id"
-                render={() => <ArtView
-                  selectedArtView={this.state.selectedArtView}
-                />}
-              />
-              <Route path="/about"
-                component={About}
-              />
-              <Route component={ErrorView} />
-            </Switch>
-            {/* {false ? <Route path="/art/:id" component={ModalView} /> : null} */}
-        </div>
-      </div>
-    </React.Fragment>
+                <Route
+                  path="/art"
+                  render={() => <ArtView
+                    selectedArtView={this.state.selectedArtView}
+                    onSelectArt={this.selectArt}
+                  />}
+                />
+                <Route path="/about"
+                  component={About}
+                />
+                <Route component={ErrorView} />
+              </Switch>
+            </div>
+          </div>
+        </React.Fragment>
       </Router>
+
     );
   }
 }

@@ -23,7 +23,7 @@ const About = (props) => {
       <p>Tagging is the easiest and simplest style of graffiti; it includes one colour and the artist’s name or identifier. It is considered disrespectful to write a tag over another’s artists’s tag or work.</p>
       <h2 id="throwup" >ThrowUp</h2>
       <img src = {styleThrowUp} alt="throwup street art style"/>
-      <p>Tagging is the easiest and simplest style of graffiti; it includes one colour and the artist’s name or identifier. It is considered disrespectful to write a tag over another’s artists’s tag or work.</p>
+      <p>A throw-up is like a more complicated tag. It usually has two or more colours, and bubble-style lettering. A throw-up can be done quickly and repeatedly, just like a tag.</p>
       <h2 id="blockbuster" >BlockBuster</h2>
       <img src = {styleBlockBuster} alt="blockbuster street art style"/>
       <p>A blockbuster is like a massive throw-up, usually in blocky letters. Blockbusters are used to cover a large area in a small amount of time. Blockbusters can be painted with rollers, which makes them faster and easier to do.</p>

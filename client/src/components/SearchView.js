@@ -22,7 +22,9 @@ const SearchView = (props) => {
                 changeSortMethod={props.changeSortMethod}
                 sortMethod={props.sortMethod}
             />
-            <ArtGrid allArt={props.allArt} />
+            <ArtGrid allArt={props.allArt}
+                onSelectArt={props.onSelectArt}
+            />
         </div>
     )
 

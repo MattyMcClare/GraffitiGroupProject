@@ -1,11 +1,14 @@
 package com.codeclan.tagsproject.TagsProject.models;
 
+import com.codeclan.tagsproject.TagsProject.Enums.StyleType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "locations")
@@ -87,6 +90,11 @@ public class Location {
     public LocalDate getDateForLocation(){
         return art.getDateUploaded();
     }
+
+    public String getStyleForArtAtLocation() {
+        return art.getStyle();
+    }
+
 
 
 }
