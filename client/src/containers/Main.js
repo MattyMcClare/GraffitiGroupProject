@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import SearchView from "../components/SearchView";
 import ErrorView from "../components/ErrorView";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import NavBar from "./NavBar.js"
+import About from "./About.js"
 import logoImage from '../img/logo.png'
 import './Main.css';
 
@@ -67,9 +69,11 @@ class Main extends Component {
   render() {
     return (
       <Router>
-        <div className="main-container">
-          <img className="logo-image" src={logoImage} alt="tagslogo"/>
-          <Switch>
+        <Switch>
+          <div className="main-container">
+            <img className="logo-image" src={logoImage} alt="tagslogo"/>
+            <NavBar />
+            <div className="body-content">
             <Route exact path="/"
               // component={AllArtView}
               render={() => <SearchView
@@ -81,11 +85,15 @@ class Main extends Component {
                 setDistance = {this.setDistance}
                 handleSearchSubmit = {this.handleSearchSubmit}
                 />
-              }
-            />
-            <Route component={ErrorView} />
-          </Switch>
-        </div>
+                }
+              />
+              <Route path="/about"
+                component = {About}
+              />
+              <Route component={ErrorView} />
+            </div>
+          </div>
+        </Switch>
       </Router>
     );
   }
