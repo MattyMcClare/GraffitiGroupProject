@@ -55,6 +55,14 @@ public class DataLoader implements ApplicationRunner {
         Location Viewforth = new Location (55.940745, -3.213687);
         Location MarchmontStreet = new Location (55.938683, -3.200833);
         Location TheCommie = new Location (55.939649, -3.173429);
+        Location ArthursSeat = new Location( 55.945749, -3.163220);
+        Location EdinburghUni = new Location(55.944444, -3.189055);
+        Location SummerHall = new Location(55.939402, -3.181764);
+        Location DynamicEarth = new Location(55.950525, -3.174612);
+        Location DeanGallery = new Location(55.950714, -3.227904);
+        Location BlackfordHill = new Location(55.923017, -3.191389);
+        Location EdinburghZoo = new Location(55.942151, -3.269282);
+        Location CornExchange = new Location(55.927382, -3.247985);
 
 
         Location Glasgow = new Location(55.86515, -4.25763);
@@ -106,15 +114,15 @@ public class DataLoader implements ApplicationRunner {
 
         LocalDate date01 = LocalDate.of(2018, 12, 1);
         LocalDate date02 = LocalDate.of(2018, 11, 2);
-        LocalDate date03 = LocalDate.of(2019, 10, 3);
-        LocalDate date04 = LocalDate.of(2019, 9, 4);
+        LocalDate date03 = LocalDate.of(2019, 1, 3);
+        LocalDate date04 = LocalDate.of(2019, 3, 4);
         LocalDate date05 = LocalDate.of(2017, 8, 5);
         LocalDate date06 = LocalDate.of(2018, 7, 6);
         LocalDate date07 = LocalDate.of(2018, 6, 7);
         LocalDate date08 = LocalDate.of(2019, 5, 8);
         LocalDate date09 = LocalDate.of(2017, 4, 9);
         LocalDate date10 = LocalDate.of(2019, 3, 10);
-        LocalDate date11 = LocalDate.of(2019, 6, 10);
+        LocalDate date11 = LocalDate.of(2019, 5, 10);
         LocalDate date12 = LocalDate.of(2018, 2, 11);
         LocalDate date13 = LocalDate.of(2016, 1, 12);
         LocalDate date14 = LocalDate.of(2019, 2, 13);
@@ -123,33 +131,41 @@ public class DataLoader implements ApplicationRunner {
         LocalDate date17 = LocalDate.of(2018, 5, 16);
         LocalDate date18 = LocalDate.of(2018, 6, 17);
         LocalDate date19 = LocalDate.of(2017, 7, 18);
-        LocalDate date20 = LocalDate.of(2019, 8, 19);
+        LocalDate date20 = LocalDate.of(2019, 2, 19);
         LocalDate date21 = LocalDate.of(2017, 9, 20);
         LocalDate date22 = LocalDate.of(2017, 10, 21);
         LocalDate date23 = LocalDate.of(2018, 11, 22);
         LocalDate date24 = LocalDate.of(2017, 12, 23);
         LocalDate date25 = LocalDate.of(2017, 1, 24);
-        LocalDate date26 = LocalDate.of(2019, 11, 25);
+        LocalDate date26 = LocalDate.of(2019, 1, 25);
         LocalDate date27 = LocalDate.of(2016, 10, 26);
         LocalDate date28 = LocalDate.of(2018, 9, 27);
         LocalDate date29 = LocalDate.of(2016, 8, 28);
-        LocalDate date30 = LocalDate.of(2019, 7, 29);
-        LocalDate date31 = LocalDate.of(2019, 6, 30);
+        LocalDate date30 = LocalDate.of(2019, 3, 29);
+        LocalDate date31 = LocalDate.of(2019, 2, 27);
         LocalDate date32 = LocalDate.of(2017, 5, 1);
         LocalDate date33 = LocalDate.of(2018, 4, 2);
-        LocalDate date34 = LocalDate.of(2019, 3, 3);
+        LocalDate date34 = LocalDate.of(2017, 3, 3);
         LocalDate date35 = LocalDate.of(2017, 2, 4);
-        LocalDate date36 = LocalDate.of(2019, 12, 5);
+        LocalDate date36 = LocalDate.of(2016, 12, 5);
         LocalDate date37 = LocalDate.of(2018, 1, 6);
         LocalDate date38 = LocalDate.of(2018, 11, 7);
         LocalDate date39 = LocalDate.of(2019, 2, 8);
-        LocalDate date40 = LocalDate.of(2019, 10, 9);
+        LocalDate date40 = LocalDate.of(2016, 10, 9);
         LocalDate date41 = LocalDate.of(2019, 3, 10);
         LocalDate date42 = LocalDate.of(2017, 9, 11);
         LocalDate date43 = LocalDate.of(2018, 4, 12);
-        LocalDate date44 = LocalDate.of(2019, 8, 13);
+        LocalDate date44 = LocalDate.of(2018, 8, 13);
         LocalDate date45 = LocalDate.of(2019, 5, 14);
-        LocalDate date46 = LocalDate.of(2016, 7, 15);
+        LocalDate date46 = LocalDate.of(2016, 10, 15);
+        LocalDate date47 = LocalDate.of(2017, 7, 15);
+        LocalDate date48 = LocalDate.of(2018, 7, 15);
+        LocalDate date49 = LocalDate.of(2018, 3, 15);
+        LocalDate date50 = LocalDate.of(2017, 4, 15);
+        LocalDate date51 = LocalDate.of(2016, 11, 15);
+        LocalDate date52 = LocalDate.of(2016, 12, 15);
+        LocalDate date53 = LocalDate.of(2018, 4, 15);
+        LocalDate date54 = LocalDate.of(2016, 8, 15);
 
         Art piece01 = new Art(goner, StyleType.THROWUP, "Rough AF", date01);
         Art piece02 = new Art(gosh, StyleType.STENCIL, "Always unaccountable", date03);
@@ -196,6 +212,15 @@ public class DataLoader implements ApplicationRunner {
         Art piece43 = new Art(mother, StyleType.PIECE, "Coverup", date44);
         Art piece44 = new Art(unknown, StyleType.TAG, "Passionate Souls", date45);
         Art piece45 = new Art(future, StyleType.THROWUP, "L'amour", date46);
+        Art piece46 = new Art(mother, StyleType.HEAVEN, "Graffiti heaven", date47);
+        Art piece47 = new Art(gosh, StyleType.HEAVEN, "graffiti ninja!", date48);
+        Art piece48 = new Art(unknown, StyleType.BLOCKBUSTER, "Nasty boys for life", date49);
+        Art piece49 = new Art(goner, StyleType.BLOCKBUSTER, "bustin blocks", date50);
+        Art piece50 = new Art(future, StyleType.WILDSTYLE, "Wild but not free", date51);
+        Art piece51 = new Art(future, StyleType.WILDSTYLE, "You wot?", date52);
+        Art piece52 = new Art(unknown, StyleType.SLAP, "Cannibal!", date53);
+        Art piece53 = new Art(unknown, StyleType.SLAP, "SLap your head off your shoulders", date54);
+
 
         Image image01 = new Image(piece01, "../seedimages/badBanksyGoner.png");
         Image image02 = new Image(piece02, "../seedimages/blackoutGosh.jpg");
@@ -240,8 +265,16 @@ public class DataLoader implements ApplicationRunner {
         Image image41 = new Image(piece41, "../seedimages/milne'sCloseVenusGoner.jpg");
         Image image42 = new Image(piece42, "../seedimages/stylishGodUnknown.jpg");
         Image image43 = new Image(piece43, "../seedimages/paintedOverMother.jpg");
-        Image image44 = new Image(piece44, "../seedimages/passionateUnknown.jpg");
-        Image image45 = new Image(piece45, "../seedimages/lamourFuture.jpg");
+        Image image44 = new Image(piece44, "../seedimages/lamourFuture.jpg");
+        Image image45 = new Image(piece45, "../seedimages/passionateUnknown.jpg");
+        Image image46 = new Image(piece46, "../seedimages/graffitiHeaven.jpg");
+        Image image47 = new Image(piece47, "../seedimages/abyssHeaven.jpg");
+        Image image48 = new Image(piece48, "../seedimages/nastyBlockbuster.jpg");
+        Image image49 = new Image(piece49, "../seedimages/lionBlockbuster.jpg");
+        Image image50 = new Image(piece50, "../seedimages/wackyWildstyle.jpg");
+        Image image51 = new Image(piece51, "../seedimages/wildWildstyle.jpg");
+        Image image52 = new Image(piece52, "../seedimages/cannibalSLap.jpg");
+        Image image53 = new Image(piece53, "../seedimages/disembodiedSLap.jpg");
 
         CablsWyndHouse.setStringLocation("CablsWyndHouse");
         QueenCharlotteStreet.setStringLocation("QueenCharlotteStreet");
@@ -288,8 +321,23 @@ public class DataLoader implements ApplicationRunner {
         PolmuirRoad.setStringLocation("PolmuirRoad");
         Beechgrove.setStringLocation("Beechgrove");
         TheChanonry.setStringLocation("TheChanonry");
+        ArthursSeat.setStringLocation("Arthur's Seat");
+        EdinburghUni.setStringLocation("Edinburgh Uni");
+        SummerHall.setStringLocation("SummerHall");
+        DynamicEarth.setStringLocation("Dynamic Earth");
+        DeanGallery.setStringLocation("Dean Gallery");
+        BlackfordHill.setStringLocation("Blackford Hill");
+        EdinburghZoo.setStringLocation("Edinburgh Zoo");
+        CornExchange.setStringLocation("Corn Exchange");
 
-
+        locationRepository.save(ArthursSeat);
+        locationRepository.save(EdinburghUni);
+        locationRepository.save(SummerHall);
+        locationRepository.save(DynamicEarth);
+        locationRepository.save(DeanGallery);
+        locationRepository.save(EdinburghZoo);
+        locationRepository.save(BlackfordHill);
+        locationRepository.save(CornExchange);
         locationRepository.save(CablsWyndHouse);
         locationRepository.save(QueenCharlotteStreet);
         locationRepository.save(Edinburgh);
@@ -385,6 +433,14 @@ public class DataLoader implements ApplicationRunner {
         piece43.addImageToList(image43);
         piece44.addImageToList(image44);
         piece45.addImageToList(image45);
+        piece46.addImageToList(image46);
+        piece47.addImageToList(image47);
+        piece48.addImageToList(image48);
+        piece49.addImageToList(image49);
+        piece50.addImageToList(image50);
+        piece51.addImageToList(image51);
+        piece52.addImageToList(image52);
+        piece53.addImageToList(image53);
 
         piece01.setLocation(CablsWyndHouse);
         piece02.setLocation(QueenCharlotteStreet);
@@ -430,7 +486,15 @@ public class DataLoader implements ApplicationRunner {
         piece42.setLocation(AlburyRoad);
         piece43.setLocation(PolmuirRoad);
         piece44.setLocation(Beechgrove);
-        piece45.setLocation(TheChanonry);
+        piece45.setLocation(ArthursSeat);
+        piece46.setLocation(SummerHall);
+        piece47.setLocation(EdinburghUni);
+        piece48.setLocation(DynamicEarth);
+        piece49.setLocation(EdinburghZoo);
+        piece50.setLocation(BlackfordHill);
+        piece51.setLocation(CornExchange);
+        piece52.setLocation(DeanGallery);
+        piece53.setLocation(TheChanonry);
 
         artRepository.save(piece01);
         artRepository.save(piece02);
@@ -477,6 +541,14 @@ public class DataLoader implements ApplicationRunner {
         artRepository.save(piece43);
         artRepository.save(piece44);
         artRepository.save(piece45);
+        artRepository.save(piece46);
+        artRepository.save(piece47);
+        artRepository.save(piece48);
+        artRepository.save(piece49);
+        artRepository.save(piece50);
+        artRepository.save(piece51);
+        artRepository.save(piece52);
+        artRepository.save(piece53);
 
         goner.addArtToList(piece01);
         gosh.addArtToList(piece02);
@@ -523,6 +595,14 @@ public class DataLoader implements ApplicationRunner {
         mother.addArtToList(piece43);
         unknown.addArtToList(piece44);
         future.addArtToList(piece45);
+        mother.addArtToList(piece46);
+        gosh.addArtToList(piece47);
+        unknown.addArtToList(piece48);
+        goner.addArtToList(piece49);
+        future.addArtToList(piece50);
+        future.addArtToList(piece51);
+        unknown.addArtToList(piece52);
+        unknown.addArtToList(piece53);
 
         artistRepository.save(brutha);
         artistRepository.save(future);
@@ -576,6 +656,14 @@ public class DataLoader implements ApplicationRunner {
         imageRepo.save(image43);
         imageRepo.save(image44);
         imageRepo.save(image45);
+        imageRepo.save(image46);
+        imageRepo.save(image47);
+        imageRepo.save(image48);
+        imageRepo.save(image49);
+        imageRepo.save(image50);
+        imageRepo.save(image51);
+        imageRepo.save(image52);
+        imageRepo.save(image53);
     }
 
 
