@@ -1,5 +1,5 @@
 import React from "react";
 
-const ErrorView = () => <h1>404 - PAGE NOT FOUND</h1>;
+const ErrorView = (({ erroring }) => (erroring) ? (<h1>Something went wrong.</h1>) : null)
 
 export default ErrorView;

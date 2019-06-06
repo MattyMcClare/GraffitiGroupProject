@@ -24,8 +24,8 @@ class Main extends Component {
       distance: 500,
       allArt: [],
       selectedArtView: null,
-      style: "null"
-
+      style: "null",
+      erroring: false
     }
     this.changeSortMethod = this.changeSortMethod.bind(this);
     this.setDefaultLocation = this.setDefaultLocation.bind(this);
@@ -40,10 +40,13 @@ class Main extends Component {
   componentDidMount() {
     const url = `http://localhost:8080/locations`;
     fetch(url)
-      // .then(handleErrors)
       .then(res => res.json())
       .then((allArt) => {
-        this.setState({ allArt })
+        this.setState({ allArt, erroring: false })
+      })
+      .catch(error => {
+        console.error(error)
+        this.setState({ erroring: true })
       })
   }
 
@@ -58,10 +61,13 @@ class Main extends Component {
     request.open("GET", url);
 
     request.addEventListener("load", () => {
-      if (request.status !== 200) return;
+      if (request.status !== 200) {
+        this.setState({ erroring: true });
+        return;
+      };
       const jsonString = request.responseText;
       const data = JSON.parse(jsonString);
-      this.setState({ allArt: data })
+      this.setState({ allArt: data, erroring: false })
     });
 
     request.send();
@@ -92,24 +98,19 @@ class Main extends Component {
   }
 
   selectArt(selectedId) {
-
     const url = `http://localhost:8080/arts/${selectedId}`;
     fetch(url)
       .then(res => res.json())
-      .then((selectedArtView) => (this.setState({ selectedArtView })))
+      .then((selectedArtView) => (this.setState({ selectedArtView, erroring: false })))
+      .catch((error) => {
+        this.setState({ erroring: true })
+      })
   }
 
   setStyle(inputStyle) {
     console.log(inputStyle);
     this.setState({ style: inputStyle });
   }
-
-  // handleErrors(res) {
-  //   if (!res.ok) {
-  //     return <ErrorView />;
-  //   }
-  //   return res;
-  // }
 
   render() {
     return (
@@ -170,6 +171,7 @@ class Main extends Component {
                 />
                 <Route component={ErrorView} />
               </Switch>
+              <ErrorView erroring={this.state.erroring}></ErrorView>
             </div>
           </div>
         </React.Fragment>
