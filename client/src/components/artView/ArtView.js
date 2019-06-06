@@ -6,6 +6,7 @@ import dateString from '../../helpers/dateString'
 
 
 const ArtView = (props) => {
+
     if (props.selectedArtView === null) {
         return null;
     }

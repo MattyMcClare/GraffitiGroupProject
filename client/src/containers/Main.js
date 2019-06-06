@@ -37,6 +37,10 @@ class Main extends Component {
 
   }
 
+  componentDidUpdate() {
+    window.scrollTo(0, 0)
+  }
+
   handleSearchSubmit(){
     this.setState({toAllArtView: true}, ()=>{ this.handleSearchQuery() })
   }
