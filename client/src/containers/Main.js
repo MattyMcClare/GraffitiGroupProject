@@ -37,8 +37,18 @@ class Main extends Component {
 
   }
 
-  handleSearchSubmit(){
-    this.setState({toAllArtView: true}, ()=>{ this.handleSearchQuery() })
+  componentDidMount() {
+    const url = `http://localhost:8080/locations`;
+    fetch(url)
+      // .then(handleErrors)
+      .then(res => res.json())
+      .then((allArt) => {
+        this.setState({ allArt })
+      })
+  }
+
+  handleSearchSubmit() {
+    this.setState({ toAllArtView: true }, () => { this.handleSearchQuery() })
   }
 
   handleSearchQuery() {
@@ -94,6 +104,13 @@ class Main extends Component {
     this.setState({ style: inputStyle });
   }
 
+  // handleErrors(res) {
+  //   if (!res.ok) {
+  //     return <ErrorView />;
+  //   }
+  //   return res;
+  // }
+
   render() {
     return (
       <Router>
@@ -108,21 +125,22 @@ class Main extends Component {
                     if (this.state.toAllArtView === true) {
                       return <Redirect to='/all-art' />
                     } else {
-                      return(
-                      <div className="background-image">
-                      <h1>Discover a curated collection of street art in Scotland</h1>
-                      <Filter
-                        allArt={this.state.allArt}
-                        changeSortMethod={this.changeSortMethod}
-                        sortMethod={this.state.sortMethod}
-                        setLocation={this.setLocation}
-                        setDefaultLocation={this.setDefaultLocation}
-                        setDistance={this.setDistance}
-                        handleSearchSubmit={this.handleSearchSubmit}
-                        onSelectArt={this.selectArt}
-                        setStyle={this.setStyle}
-                      />
-                      </div>) }
+                      return (
+                        <div className="background-image">
+                          <h1>Discover a curated collection of street art in Scotland</h1>
+                          <Filter
+                            allArt={this.state.allArt}
+                            changeSortMethod={this.changeSortMethod}
+                            sortMethod={this.state.sortMethod}
+                            setLocation={this.setLocation}
+                            setDefaultLocation={this.setDefaultLocation}
+                            setDistance={this.setDistance}
+                            handleSearchSubmit={this.handleSearchSubmit}
+                            onSelectArt={this.selectArt}
+                            setStyle={this.setStyle}
+                          />
+                        </div>)
+                    }
                   }}
                 />
                 <Route
