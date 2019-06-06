@@ -12,7 +12,6 @@ import './Main.css';
 
 
 class Main extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -24,7 +23,8 @@ class Main extends Component {
       },
       distance: 500,
       allArt: [],
-      selectedArtView: null
+      selectedArtView: null,
+      style: "null"
 
     }
     this.changeSortMethod = this.changeSortMethod.bind(this);
@@ -33,21 +33,9 @@ class Main extends Component {
     this.setDistance = this.setDistance.bind(this);
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
     this.selectArt = this.selectArt.bind(this);
+    this.setStyle = this.setStyle.bind(this);
 
   }
-
-  // previousLocation = this.props.location;
-
-  // componentWillUpdate(nextProps) {
-  //   let { location } = this.state;
-
-  //   // set previousLocation if props.location is not modal
-  //   if (
-  //     nextProps.history.action !== "POP" &&
-  //     (!location.state || !location.state.modal)
-  //   ) {
-  //     this.previousLocation = this.props.location;
-  //   }
 
   handleSearchSubmit(){
     this.setState({toAllArtView: true}, ()=>{ this.handleSearchQuery() })
@@ -55,9 +43,9 @@ class Main extends Component {
 
   handleSearchQuery() {
     const sortBy = this.state.sortMethod ? 'sortbydate' : 'sortbydistance'
-    const url = `http://localhost:8080/locations/${sortBy}/lat=${this.state.location.lat}/long=${this.state.location.long}/dis=${this.state.distance}/`;
+    const url = `http://localhost:8080/locations/${sortBy}/lat=${this.state.location.lat}/long=${this.state.location.long}/dis=${this.state.distance}/style=${this.state.style}`;
     const request = new XMLHttpRequest();
-    request.open('GET', url);
+    request.open("GET", url);
 
     request.addEventListener("load", () => {
       if (request.status !== 200) return;
@@ -70,11 +58,10 @@ class Main extends Component {
   }
 
   changeSortMethod() {
-
     const sortMethod = this.state.sortMethod;
     this.setState({ sortMethod: !sortMethod }, () => {
-      this.handleSearchSubmit()
-    })
+      this.handleSearchSubmit();
+    });
   }
 
   setLocation(latLong) {
@@ -91,7 +78,7 @@ class Main extends Component {
   }
 
   setDistance(inputDistance) {
-    this.setState({ distance: inputDistance })
+    this.setState({ distance: inputDistance });
   }
 
   selectArt(selectedId) {
@@ -100,11 +87,12 @@ class Main extends Component {
     fetch(url)
       .then(res => res.json())
       .then((selectedArtView) => (this.setState({ selectedArtView })))
-
   }
 
-
-
+  setStyle(inputStyle) {
+    console.log(inputStyle);
+    this.setState({ style: inputStyle });
+  }
 
   render() {
     return (
@@ -132,6 +120,7 @@ class Main extends Component {
                         setDistance={this.setDistance}
                         handleSearchSubmit={this.handleSearchSubmit}
                         onSelectArt={this.selectArt}
+                        setStyle={this.setStyle}
                       />
                       </div>) }
                   }}
@@ -147,6 +136,7 @@ class Main extends Component {
                     setDistance={this.setDistance}
                     handleSearchSubmit={this.handleSearchSubmit}
                     onSelectArt={this.selectArt}
+                    setStyle={this.setStyle}
                   />
                   }
                 />

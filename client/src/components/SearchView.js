@@ -1,9 +1,9 @@
-import React from 'react';
-import ArtGrid from './ArtGrid';
-import Filter from './filters/Filter';
-import Sort from './sorts/Sort';
+import React from "react";
+import ArtGrid from "./ArtGrid";
+import Filter from "./filters/Filter";
+import Sort from "./sorts/Sort";
 
-const SearchView = (props) => {
+const SearchView = props => {
 
     const locationNotFound = () => {
 
@@ -17,6 +17,7 @@ const SearchView = (props) => {
                 setDefaultLocation={props.setDefaultLocation}
                 setDistance={props.setDistance}
                 handleSearchSubmit={props.handleSearchSubmit}
+                setStyle={props.setStyle}
             />
             <Sort
                 changeSortMethod={props.changeSortMethod}
