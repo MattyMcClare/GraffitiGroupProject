@@ -142,7 +142,7 @@ public class DataLoader implements ApplicationRunner {
         LocalDate date28 = LocalDate.of(2018, 9, 27);
         LocalDate date29 = LocalDate.of(2016, 8, 28);
         LocalDate date30 = LocalDate.of(2019, 3, 29);
-        LocalDate date31 = LocalDate.of(2019, 2, 30);
+        LocalDate date31 = LocalDate.of(2019, 2, 27);
         LocalDate date32 = LocalDate.of(2017, 5, 1);
         LocalDate date33 = LocalDate.of(2018, 4, 2);
         LocalDate date34 = LocalDate.of(2017, 3, 3);
